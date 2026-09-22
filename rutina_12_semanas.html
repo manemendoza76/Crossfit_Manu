@@ -1,0 +1,2260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Rutina">
+<meta name="theme-color" content="#0f4c81">
+<link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='36' fill='%230f4c81'/><text x='90' y='120' font-family='-apple-system,Helvetica' font-size='110' font-weight='700' text-anchor='middle' fill='white'>R</text></svg>">
+<title>Rutina 6 meses</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --ink: #1a1f2e;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --accent: #0f4c81;
+    --accent-2: #1f6feb;
+    --strength: #0f4c81;
+    --accessory: #0e7c66;
+    --conditioning: #c2410c;
+    --core: #6b21a8;
+    --skill: #7c2d12;
+    --note: #f59e0b;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 15px;
+  }
+  header.top {
+    background: linear-gradient(135deg, #0f4c81 0%, #1f6feb 100%);
+    color: white;
+    padding: 32px 40px 24px;
+  }
+  header.top h1 {
+    margin: 0 0 4px 0;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  header.top .subtitle {
+    opacity: 0.85;
+    font-size: 14px;
+  }
+  header.top .meta {
+    margin-top: 16px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    opacity: 0.9;
+  }
+  header.top .meta span strong { opacity: 0.7; margin-right: 4px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 24px 60px; }
+
+  .philosophy {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  .philosophy h2 { margin: 0 0 8px 0; font-size: 16px; color: var(--accent); }
+  .philosophy p { margin: 6px 0; color: #374151; font-size: 14px; }
+  .philosophy .phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .philosophy .phase {
+    background: #f9fafb;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent-2);
+    font-size: 13px;
+  }
+  .philosophy .phase strong { display: block; margin-bottom: 4px; color: var(--accent); }
+
+  nav.weeks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  nav.weeks button {
+    border: 1px solid var(--line);
+    background: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  nav.weeks button:hover { border-color: var(--accent-2); color: var(--accent-2); }
+  nav.weeks button.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  nav.weeks .phase-tag {
+    padding: 8px 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    align-self: center;
+  }
+
+  section.week {
+    display: none;
+    animation: fadeIn 0.2s ease;
+  }
+  section.week.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  .week-header {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 18px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .week-header .title h2 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .week-header .title .goal {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .week-header .params {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+  }
+  .week-header .params .param strong {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+
+  .sessions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 14px;
+  }
+  .session {
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .session h3 {
+    margin: 0;
+    padding: 14px 18px;
+    background: #f9fafb;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    color: var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .session h3 .day-tag {
+    font-size: 11px;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .blocks { padding: 8px 0; }
+  .block {
+    padding: 10px 18px;
+    border-left: 3px solid var(--accessory);
+    margin: 6px 12px;
+    background: #fafbfc;
+    border-radius: 0 6px 6px 0;
+  }
+  .block.strength { border-left-color: var(--strength); }
+  .block.accessory { border-left-color: var(--accessory); }
+  .block.conditioning { border-left-color: var(--conditioning); }
+  .block.core { border-left-color: var(--core); }
+  .block.skill { border-left-color: var(--skill); }
+  .block .block-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .block .block-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .block .block-type {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .block .block-body {
+    font-size: 13px;
+    color: #374151;
+    white-space: pre-line;
+  }
+  .block .block-body strong { color: var(--ink); }
+  .block .cue {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .legend {
+    margin-top: 24px;
+    padding: 14px 18px;
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .legend .dot {
+    width: 10px; height: 10px; border-radius: 2px; display: inline-block;
+  }
+  .legend .abbrev { color: var(--muted); font-size: 12px; }
+
+  footer.notes {
+    margin-top: 20px;
+    padding: 18px 22px;
+    background: #fffbeb;
+    border-radius: 8px;
+    border-left: 4px solid var(--note);
+    font-size: 13px;
+    color: #78350f;
+  }
+  footer.notes strong { display: block; margin-bottom: 6px; color: #92400e; }
+
+  @media print {
+    body { background: white; }
+    nav.weeks, .toolbar, .block-log-container { display: none; }
+    section.week { display: block !important; page-break-after: always; }
+    header.top { background: white; color: var(--ink); border-bottom: 2px solid var(--accent); }
+    .session { break-inside: avoid; }
+  }
+
+  /* Toolbar */
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--card);
+    padding: 10px 14px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  .toolbar button {
+    border: 1px solid var(--line);
+    background: white;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    font-family: inherit;
+  }
+  .toolbar button:hover { border-color: var(--accent); color: var(--accent); }
+  .toolbar button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+  .toolbar button.danger:hover { border-color: #dc2626; color: #dc2626; }
+  .toolbar .info { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+  /* Log form dentro de cada bloque */
+  .block-log-container {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+  }
+  .block-log {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+  .block-log input {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 12px;
+    font-family: inherit;
+    min-width: 0;
+    background: white;
+  }
+  .block-log input:focus { outline: none; border-color: var(--accent-2); }
+  .block-log input.log-date { width: 130px; }
+  .block-log input.log-weight { width: 90px; }
+  .block-log input.log-reps { width: 100px; }
+  .block-log input.log-notes { flex: 1; min-width: 120px; }
+  .block-log button.log-save {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: inherit;
+  }
+  .block-log button.log-save:hover { background: var(--accent-2); }
+  .log-history {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-height: 140px;
+    overflow-y: auto;
+  }
+  .log-history .entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    background: white;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+    gap: 8px;
+  }
+  .log-history .entry .txt { flex: 1; color: #374151; }
+  .log-history .entry .txt strong { color: var(--ink); }
+  .log-history .entry .del {
+    color: #9ca3af;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    padding: 0 4px;
+    line-height: 1;
+  }
+  .log-history .entry .del:hover { color: #dc2626; }
+  .log-history .empty { padding: 4px 0; opacity: 0.6; font-style: italic; }
+
+  /* Progress view */
+  section.progress-view { display: none; }
+  section.progress-view.active { display: block; }
+  .progress-card {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+  }
+  .progress-card h3 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    color: var(--accent);
+  }
+  .progress-card .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .exercise-progress {
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+  .exercise-progress:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .exercise-progress .name {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .exercise-progress .name .count {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  .progress-table {
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+  }
+  .progress-table th, .progress-table td {
+    padding: 5px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  .progress-table th {
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .progress-table tr:last-child td { border-bottom: none; }
+  .progress-table td.pr { color: var(--accent); font-weight: 600; }
+  .progress-table td.rm-cell { color: #b45309; font-weight: 600; }
+  .progress-table tr.is-rm td { background: #fef3c7; }
+
+  /* RM checkbox en el log form */
+  .block-log label.log-rm {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #b45309;
+    font-weight: 600;
+    padding: 4px 8px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fffbeb;
+    cursor: pointer;
+    user-select: none;
+  }
+  .block-log label.log-rm input { margin: 0; accent-color: #b45309; }
+  .log-history .entry.is-rm {
+    background: #fef3c7;
+    border-color: #fbbf24;
+  }
+  .rm-badge {
+    display: inline-block;
+    background: #b45309;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+    margin-right: 4px;
+  }
+
+  /* Panel "RMs vigentes" */
+  .rm-summary {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid #fbbf24;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+  }
+  .rm-summary h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .rm-summary table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .rm-summary th, .rm-summary td {
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 1px solid #fde68a;
+  }
+  .rm-summary th {
+    color: #92400e;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .rm-summary tr:last-child td { border-bottom: none; }
+  .rm-summary td.weight { color: #b45309; font-weight: 700; }
+  .rm-summary .empty { color: #92400e; font-style: italic; padding: 8px 0; font-size: 12px; }
+
+  /* Vista Diario */
+  section.diario-view { display: none; }
+  section.diario-view.active { display: block; }
+  .diario-card {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+  }
+  .diario-card h3 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    color: var(--accent);
+  }
+  .diario-card .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .diario-form {
+    display: grid;
+    grid-template-columns: 1fr 130px 100px 100px auto auto;
+    gap: 8px;
+    align-items: center;
+    padding: 14px;
+    background: #f9fafb;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  .diario-form input, .diario-form label.log-rm {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    background: white;
+    min-width: 0;
+  }
+  .diario-form input:focus { outline: none; border-color: var(--accent-2); }
+  .diario-form input.d-notes { grid-column: 1 / -1; }
+  .diario-form button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .diario-form button:hover { background: var(--accent-2); }
+  @media (max-width: 700px) {
+    .diario-form {
+      grid-template-columns: 1fr 1fr;
+    }
+    .diario-form input.d-notes { grid-column: 1 / -1; }
+    .diario-form button { grid-column: 1 / -1; }
+  }
+  .diario-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .diario-day {
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+  .diario-day:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .diario-day .day-head {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .diario-day .day-head .count {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 11px;
+    margin-left: 6px;
+  }
+  .diario-day .entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-size: 12px;
+    gap: 8px;
+    margin-bottom: 3px;
+  }
+  .diario-day .entry.is-rm {
+    background: #fef3c7;
+    border-color: #fbbf24;
+  }
+  .diario-day .entry .txt { flex: 1; color: #374151; }
+  .diario-day .entry .txt strong { color: var(--ink); }
+  .diario-day .entry .del {
+    color: #9ca3af;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 0 4px;
+    line-height: 1;
+  }
+  .diario-day .entry .del:hover { color: #dc2626; }
+
+  /* Config panel */
+  .config-panel {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+    font-size: 13px;
+    display: none;
+  }
+  .config-panel.open { display: block; }
+  .config-panel label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .config-panel input[type="url"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    margin-bottom: 10px;
+    background: white;
+    box-sizing: border-box;
+  }
+  .config-panel input[type="url"]:focus { outline: none; border-color: var(--accent-2); }
+  .config-panel .buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+  .config-panel button {
+    border: 1px solid var(--line);
+    background: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+  .config-panel button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+  .config-panel #config-result {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 8px 10px;
+    background: #f9fafb;
+    border-radius: 4px;
+    display: none;
+  }
+  .config-panel #config-result.show { display: block; }
+  .config-panel #config-result.ok { color: #059669; background: #ecfdf5; }
+  .config-panel #config-result.err { color: #b91c1c; background: #fef2f2; }
+  #sync-status {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  #sync-status.syncing { color: var(--accent-2); }
+  #sync-status.error { color: #b91c1c; }
+  #sync-status.ok { color: #059669; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--ink);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>Rutina 6 meses</h1>
+  <div class="subtitle">Estado físico + ganancia de músculo. Basado en el pool de ejercicios de Reyner</div>
+  <div class="meta">
+    <span><strong>Atleta:</strong> Ángel</span>
+    <span><strong>Duración:</strong> 6 meses (~26 semanas)</span>
+    <span><strong>Bloque A (S1-6):</strong> 2 sesiones/sem</span>
+    <span><strong>Bloque B (S7-12):</strong> 3 sesiones/sem</span>
+    <span><strong>Enfoque:</strong> hipertrofia + condición</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="philosophy">
+    <h2>Filosofía y progresión</h2>
+    <p>Plan de 6 meses estructurado en dos ciclos de 12 semanas. Solo patrones básicos: sentadilla, bisagra de cadera, empuje horizontal, empuje vertical, tracción horizontal, tracción vertical, core y condición metabólica. <strong>Fuera</strong> HSPU / HSW / RMU / BMU / muscle-ups / kipping avanzado — priorizamos ejecución estricta y sobrecarga progresiva.</p>
+    <div class="phases">
+      <div class="phase">
+        <strong>Ciclo 1. Meses 1-3 (Semanas 1-12)</strong>
+        Bloque A (S1-6): full body A/B, 2 sesiones/sem, RIR 3→2, cierre con 5RM. Bloque B (S7-12): split Lower/Push/Pull, 3 sesiones/sem, RIR 2→1, cierre con 3RM.
+      </div>
+      <div class="phase">
+        <strong>Ciclo 2. Meses 4-6 (Semanas 13-24)</strong>
+        Repite la estructura del Ciclo 1 subiendo carga sobre los RMs registrados. El objetivo del segundo ciclo es superar los RMs del primero (usa el panel "RMs vigentes" como referencia).
+      </div>
+    </div>
+  </div>
+
+  <nav class="weeks" id="nav-weeks">
+    <span class="phase-tag">Bloque A</span>
+    <button data-w="1" class="active">S1</button>
+    <button data-w="2">S2</button>
+    <button data-w="3">S3</button>
+    <button data-w="4">S4</button>
+    <button data-w="5">S5</button>
+    <button data-w="6">S6</button>
+    <span class="phase-tag">Bloque B</span>
+    <button data-w="7">S7</button>
+    <button data-w="8">S8</button>
+    <button data-w="9">S9</button>
+    <button data-w="10">S10</button>
+    <button data-w="11">S11</button>
+    <button data-w="12">S12</button>
+  </nav>
+
+  <div class="toolbar">
+    <button id="toggle-progress">Ver progreso</button>
+    <button id="toggle-diario">Diario</button>
+    <button id="export-data">Exportar log</button>
+    <button id="import-data">Importar log</button>
+    <input type="file" id="import-file" accept="application/json,.json" style="display:none">
+    <button id="clear-data" class="danger">Borrar todo</button>
+    <button id="config-btn">Configurar sync</button>
+    <span id="sync-status">sin sincronizar</span>
+  </div>
+
+  <div class="config-panel" id="config-panel">
+    <label for="config-url">URL de la Apps Script Web App</label>
+    <input type="url" id="config-url" placeholder="https://script.google.com/macros/s/AKfyc.../exec">
+    <div class="buttons">
+      <button id="config-save" class="primary" type="button">Guardar URL</button>
+      <button id="config-test" type="button">Probar conexión</button>
+      <button id="config-pull" type="button">Descargar del Sheet</button>
+      <button id="config-push" type="button">Subir todo al Sheet</button>
+    </div>
+    <div id="config-result"></div>
+  </div>
+
+  <section class="progress-view" id="progress-view">
+    <div id="rm-summary-slot"></div>
+    <div class="progress-card">
+      <h3>Progreso registrado</h3>
+      <div class="subtitle">Todos los pesos y resultados que has guardado, agrupados por ejercicio y ordenados cronológicamente. Las entradas marcadas como RM aparecen destacadas.</div>
+      <div id="progress-content"></div>
+    </div>
+  </section>
+
+  <section class="diario-view" id="diario-view">
+    <div class="diario-card">
+      <h3>Diario de entrenamientos</h3>
+      <div class="subtitle">Añade entradas libres del día — ejercicio, peso, reps, y marca la casilla RM si es tu mejor a ese número de reps. Aparecen agrupadas por fecha (más reciente primero).</div>
+      <div class="diario-form">
+        <input type="text" class="d-exercise" placeholder="Ejercicio (ej. Back Squat)">
+        <input type="date" class="d-date">
+        <input type="text" class="d-weight" placeholder="Peso (kg)" inputmode="decimal">
+        <input type="text" class="d-reps" placeholder="Reps" inputmode="text">
+        <label class="log-rm" title="Marcar como RM a estas reps">
+          <input type="checkbox" class="d-rm"> RM
+        </label>
+        <button type="button" class="d-save">Guardar</button>
+        <input type="text" class="d-notes" placeholder="Notas (opcional)">
+      </div>
+      <div class="diario-list" id="diario-content"></div>
+    </div>
+  </section>
+
+  <!-- SEMANA 1 -->
+  <section class="week active" id="w1">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 1. Adaptación</h2>
+        <div class="goal">Aprender patrones, dejarse peso en la recámara, priorizar técnica</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>2/sem</div>
+        <div class="param"><strong>RIR</strong>3</div>
+        <div class="param"><strong>Enfoque</strong>Volumen ligero</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Sesión A. Squat + Push <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength">
+            <div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @RIR 3
+Rest 2' entre series
+<span class="cue">Elige un peso con el que podrías hacer 11 reps. Prioriza profundidad y postura.</span></div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">B1. DB Bench Press</span><span class="block-type">Empuje horiz.</span></div>
+            <div class="block-body"><strong>3 x 10</strong> @Medium
+Superserie con B2</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">B2. Bent Over Row (barra)</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>3 x 10</strong> @Medium
+Rest 90" tras cada pareja B1+B2</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">C. Bulgarian Split</span><span class="block-type">Unilateral</span></div>
+            <div class="block-body"><strong>2 x 10 por pierna</strong> con DBs ligeras o peso corporal
+Rest 60" entre lados</div>
+          </div>
+          <div class="block core">
+            <div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+30" Plancha frontal
+30" Hollow Hold
+30" Rest</div>
+          </div>
+          <div class="block conditioning">
+            <div class="block-head"><span class="block-title">E. Conditioning (opcional)</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>3 Rounds Easy</strong>
+10 Cals AAB
+200m Row @pace conversacional
+<span class="cue">Pulso controlado, no ir a fuego</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="session">
+        <h3>Sesión B. Hinge + Pull <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength">
+            <div class="block-head"><span class="block-title">A. Romanian Deadlift</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @RIR 3
+Rest 2'
+<span class="cue">Bajada lenta (3"), sentir isquios</span></div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">B1. Strict Shoulder Press (barra)</span><span class="block-type">Empuje vert.</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @Light
+Superserie con B2</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">B2. Ring Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>3 x AMRAP - 2</strong> (deja 2 reps en la recámara)
+Ajusta inclinación según nivel
+Rest 90" entre parejas</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">C. Goblet Squat</span><span class="block-type">Squat unilateral</span></div>
+            <div class="block-body"><strong>3 x 12</strong> con KTB o DB @Medium
+Rest 60"</div>
+          </div>
+          <div class="block core">
+            <div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+10 Hollow Rocks
+10 V-Ups
+30" Rest</div>
+          </div>
+          <div class="block conditioning">
+            <div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>5 Rounds</strong>
+30" KTB Swing Ruso @24
+30" Rest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 2 -->
+  <section class="week" id="w2">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 2. Consolidación</h2>
+        <div class="goal">Repetir estructura, subir 2,5 kg en principales o +1 rep manteniendo forma</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>2/sem</div>
+        <div class="param"><strong>RIR</strong>3</div>
+        <div class="param"><strong>Enfoque</strong>Consolidar técnica</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Sesión A. Squat + Push <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength">
+            <div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @RIR 3 · +2,5 kg vs S1</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">B1. DB Bench Press</span><span class="block-type">Empuje horiz.</span></div>
+            <div class="block-body"><strong>3 x 10</strong> · sube DB si S1 fue fácil</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">B2. Bent Over Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>3 x 10</strong> +2,5 kg vs S1</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">C. Bulgarian Split</span><span class="block-type">Unilateral</span></div>
+            <div class="block-body"><strong>3 x 10 por pierna</strong> (subimos 1 serie)</div>
+          </div>
+          <div class="block core">
+            <div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+40" Plancha frontal
+40" Hollow Hold</div>
+          </div>
+          <div class="block conditioning">
+            <div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>4 Rounds</strong>
+10 Cals AAB + 200m Row</div>
+          </div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Sesión B. Hinge + Pull <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength">
+            <div class="block-head"><span class="block-title">A. Romanian Deadlift</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>3 x 8</strong> +2,5 kg vs S1</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">B1. Shoulder Press</span><span class="block-type">Empuje vert.</span></div>
+            <div class="block-body"><strong>3 x 8</strong> +2,5 kg vs S1</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">B2. Ring Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>3 x AMRAP - 2</strong> · reduce inclinación si notas margen</div>
+          </div>
+          <div class="block accessory">
+            <div class="block-head"><span class="block-title">C. Goblet Squat</span><span class="block-type">Squat</span></div>
+            <div class="block-body"><strong>3 x 12</strong> KTB más pesado</div>
+          </div>
+          <div class="block core">
+            <div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+12 Hollow Rocks + 12 V-Ups</div>
+          </div>
+          <div class="block conditioning">
+            <div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>6 Rounds</strong>
+30" KTB Swing Ruso @24 / 30" Rest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 3 -->
+  <section class="week" id="w3">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 3. Volumen</h2>
+        <div class="goal">Añadir volumen: pasamos a 4 series en los principales, mantenemos RIR 3</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>2/sem</div>
+        <div class="param"><strong>RIR</strong>3</div>
+        <div class="param"><strong>Enfoque</strong>Acumulación</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Sesión A. Squat + Push <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 8</strong> @RIR 3 · mismo peso que S2</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B1. DB Bench Press</span><span class="block-type">Empuje horiz.</span></div>
+            <div class="block-body"><strong>4 x 10</strong> @Medium</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B2. Bent Over Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>4 x 10</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bulgarian Split</span><span class="block-type">Unilateral</span></div>
+            <div class="block-body"><strong>3 x 12 por pierna</strong> DBs</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>4 Rounds</strong>
+45" Plancha + 45" Hollow Hold</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>Emom 10'</strong>
+1: 12 Cals AAB
+2: 15 Air Squats</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Sesión B. Hinge + Pull <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Romanian DL</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>4 x 8</strong> @RIR 3</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B1. Shoulder Press</span><span class="block-type">Empuje vert.</span></div>
+            <div class="block-body"><strong>4 x 8</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B2. Ring Row / Strict Pull Ups asistidas</span><span class="block-type">Tracción vert./horiz.</span></div>
+            <div class="block-body"><strong>4 x AMRAP - 2</strong>
+Si Ring Row va sobrado, prueba Strict Pull Ups con banda</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Goblet Squat</span><span class="block-type">Squat</span></div>
+            <div class="block-body"><strong>3 x 15</strong> @Medium</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>4 Rounds</strong>
+15 Hollow Rocks + 12 V-Ups</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>8 Rounds</strong>
+30" KTB Swing Ruso @24 / 30" Rest</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 4 -->
+  <section class="week" id="w4">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 4. Intensidad</h2>
+        <div class="goal">Subimos peso, bajamos reps. RIR 2 en principales</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>2/sem</div>
+        <div class="param"><strong>RIR</strong>2</div>
+        <div class="param"><strong>Enfoque</strong>Fuerza</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Sesión A. Squat + Push <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>5 · 5 · 5 · 5</strong> subiendo peso · última serie @RIR 2
+Rest 2-3'</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B1. Bench Press (barra)</span><span class="block-type">Empuje horiz.</span></div>
+            <div class="block-body"><strong>4 x 6</strong> @RIR 2</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B2. Bent Over Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>4 x 8</strong> @RIR 2</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bulgarian Split</span><span class="block-type">Unilateral</span></div>
+            <div class="block-body"><strong>3 x 10 por pierna</strong> DBs +pesadas</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+20 Hollow Rocks + 15 V-Ups + 30" Plancha</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>3 Rounds AFAP</strong>
+15 Cals Row
+20 Goblet Squats @24
+30 DU (o 60 SU)</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Sesión B. Hinge + Pull <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Deadlift (convencional)</span><span class="block-type">Bisagra pesada</span></div>
+            <div class="block-body"><strong>5 · 5 · 5 · 5</strong> subiendo peso · última @RIR 2
+<span class="cue">Primera semana con DL desde el suelo. Técnica antes que kilos.</span></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B1. Shoulder Press</span><span class="block-type">Empuje vert.</span></div>
+            <div class="block-body"><strong>4 x 6</strong> @RIR 2</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B2. Strict Pull Ups (con banda si hace falta)</span><span class="block-type">Tracción vert.</span></div>
+            <div class="block-body"><strong>4 x AMRAP - 1</strong>
+Rest 90" entre parejas</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Hip Thrust</span><span class="block-type">Bisagra glúteo</span></div>
+            <div class="block-body"><strong>3 x 12</strong> @Heavy</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+15 Strict Sit Ups + 30" Plancha Lateral (cada lado)</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>Emom 12'</strong>
+1: 12 Cals Row
+2: 10 KTB Swing @24
+3: 10 Burpees</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 5 -->
+  <section class="week" id="w5">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 5. Fuerza</h2>
+        <div class="goal">Peso pesado, series de 5. RIR 2. Última semana de trabajo antes del test</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>2/sem</div>
+        <div class="param"><strong>RIR</strong>2</div>
+        <div class="param"><strong>Enfoque</strong>Intensidad</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Sesión A. Squat + Push <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @RIR 2 · +2,5 kg vs S4</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B1. Bench Press</span><span class="block-type">Empuje horiz.</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @RIR 2</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B2. Bent Over Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>4 x 6</strong> @RIR 2</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. DB Bulgarian Split</span><span class="block-type">Unilateral</span></div>
+            <div class="block-body"><strong>3 x 8 por pierna</strong> DBs pesadas</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>Tabata</strong> (8 rounds 20"/10")
+1: Hollow Hold
+2: V-Ups</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>21-15-9 For Time</strong>
+Cals AAB
+KTB Swing @24
+Air Squats</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Sesión B. Hinge + Pull <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Deadlift</span><span class="block-type">Bisagra pesada</span></div>
+            <div class="block-body"><strong>4 x 4</strong> @RIR 2 · +5 kg vs S4</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B1. Shoulder Press</span><span class="block-type">Empuje vert.</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @RIR 2</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B2. Strict Pull Ups</span><span class="block-type">Tracción vert.</span></div>
+            <div class="block-body"><strong>4 x max</strong> (con o sin banda)</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Hip Thrust</span><span class="block-type">Glúteo</span></div>
+            <div class="block-body"><strong>4 x 8</strong> @Heavy</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+20 Sit Ups + 1' Plancha (3 apoyos)</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>Emom 14'</strong>
+1: 15 Cals Row
+2: 12 KTB Swing @24
+3: 10 Burpees
+4: 15 Air Squats</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 6 -->
+  <section class="week" id="w6">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 6. Test + descarga suave</h2>
+        <div class="goal">Buscar 5RM en Back Squat y Bench Press. Sesión B más ligera para consolidar.</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>2/sem</div>
+        <div class="param"><strong>RIR</strong>0-1 en test</div>
+        <div class="param"><strong>Enfoque</strong>Marcar RM</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Sesión A. Test <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat — 5RM</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Aproximaciones + 5RM</strong>
+Ej: 5x50% · 5x65% · 5x75% · 5x82% · 5RM
+<span class="cue">Dedica 20-25'. Descansa 3-4' entre approaches</span></div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Bench Press — 5RM</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Aproximaciones + 5RM</strong>
+Misma dinámica</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bent Over Row</span><span class="block-type">Accesorio</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @Medium (moderado, no vamos a rematar)</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+15 V-Ups + 45" Plancha</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Sesión B. Descarga + condición <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block accessory"><div class="block-head"><span class="block-title">A. Romanian DL</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @Medium (RIR 3, dejar en la recámara)</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B1. DB Shoulder Press (sentado)</span><span class="block-type">Empuje vert.</span></div>
+            <div class="block-body"><strong>3 x 10</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B2. Ring Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>3 x 12</strong> técnicas</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Goblet Squat</span><span class="block-type">Squat</span></div>
+            <div class="block-body"><strong>3 x 12</strong> control</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">D. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>Amrap 12'</strong>
+10 Cals Row
+10 Air Squats
+10 Push Ups
+<span class="cue">Pace sostenible, no PR</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 7 -->
+  <section class="week" id="w7">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 7. Nuevo split (3/sem)</h2>
+        <div class="goal">Pasamos a Lower / Push / Pull. Cargas basadas en los 5RM de la S6 (usamos ~75-80%).</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>3/sem</div>
+        <div class="param"><strong>RIR</strong>3</div>
+        <div class="param"><strong>Enfoque</strong>Adaptación al split</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Lower <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 6</strong> @70% del 5RM · RIR 3</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Romanian DL</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @Medium-Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. DB Bulgarian Split</span><span class="block-type">Unilateral</span></div>
+            <div class="block-body"><strong>3 x 10 por pierna</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. Hip Thrust</span><span class="block-type">Glúteo</span></div>
+            <div class="block-body"><strong>3 x 12</strong> @Heavy</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">E. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+15 GHD Sit Ups · 15 Back Ext</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Push <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bench Press</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 6</strong> @70% del 5RM · RIR 3</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Strict Shoulder Press</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 6</strong> @Medium-Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bar Dips</span><span class="block-type">Empuje horiz.</span></div>
+            <div class="block-body"><strong>3 x AMRAP - 2</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. DB Triceps Ext (tumbado)</span><span class="block-type">Tríceps</span></div>
+            <div class="block-body"><strong>3 x 12</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">E. Elevaciones Laterales DB</span><span class="block-type">Hombro</span></div>
+            <div class="block-body"><strong>3 x 15</strong></div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">Corto</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+200m Row
+15 Push Ups
+30" Rest</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Pull <span class="day-tag">Día 3</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bent Over Row</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 6</strong> @Medium-Heavy · RIR 3</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Strict Pull Ups / Chin Ups</span><span class="block-type">Tracción vert.</span></div>
+            <div class="block-body"><strong>4 x AMRAP - 2</strong>
+Rest 2'</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. DB Row (una mano)</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>3 x 10 por lado</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. DB Curl Biceps</span><span class="block-type">Bíceps</span></div>
+            <div class="block-body"><strong>3 x 12</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">E. Face Pull con goma</span><span class="block-type">Hombro post.</span></div>
+            <div class="block-body"><strong>3 x 15</strong></div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>Emom 10'</strong>
+1: 12 Cals AAB
+2: 10 KTB Swing @24</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 8 -->
+  <section class="week" id="w8">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 8. Subir intensidad</h2>
+        <div class="goal">Mismo split, subimos peso en principales y bajamos a series de 5. RIR 2.</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>3/sem</div>
+        <div class="param"><strong>RIR</strong>2</div>
+        <div class="param"><strong>Enfoque</strong>Fuerza</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Lower <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @77% · RIR 2</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Romanian DL</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>4 x 6</strong> @Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. DB Bulgarian Split</span><span class="block-type">Unilateral</span></div>
+            <div class="block-body"><strong>3 x 8 por pierna</strong> @+peso</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. Hip Thrust</span><span class="block-type">Glúteo</span></div>
+            <div class="block-body"><strong>4 x 10</strong></div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">E. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>4 Rounds</strong>
+15 GHD Sit Ups · 12 Back Ext (con disco)</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Push <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bench Press</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @77% · RIR 2</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Shoulder Press</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bar Dips (con lastre si va bien)</span><span class="block-type">Empuje</span></div>
+            <div class="block-body"><strong>3 x 8</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. DB Bench Press Inclinado</span><span class="block-type">Pecho sup.</span></div>
+            <div class="block-body"><strong>3 x 10</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">E. Elevaciones Laterales</span><span class="block-type">Hombro</span></div>
+            <div class="block-body"><strong>3 x 12</strong></div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>4 Rounds</strong>
+200m Row · 12 Push Ups · 30" Rest</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Pull <span class="day-tag">Día 3</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bent Over Row</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @Heavy · RIR 2</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Strict Pull Ups</span><span class="block-type">Tracción vert.</span></div>
+            <div class="block-body"><strong>5 x AMRAP - 1</strong>
+Rest 2'</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. DB Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>3 x 10 por lado</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. Curl Biceps BB / DB</span><span class="block-type">Bíceps</span></div>
+            <div class="block-body"><strong>4 x 10</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">E. Face Pull</span><span class="block-type">Hombro post.</span></div>
+            <div class="block-body"><strong>3 x 15</strong></div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>Emom 12'</strong>
+1: 15 Cals AAB
+2: 12 KTB Swing @24
+3: Rest</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 9 -->
+  <section class="week" id="w9">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 9. Volumen medio-alto</h2>
+        <div class="goal">Añadimos una serie en principales, mantenemos intensidad. RIR 1-2.</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>3/sem</div>
+        <div class="param"><strong>RIR</strong>1-2</div>
+        <div class="param"><strong>Enfoque</strong>Volumen intensivo</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Lower <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>5 x 5</strong> @80% · RIR 1-2</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Front Squat</span><span class="block-type">Squat variante</span></div>
+            <div class="block-body"><strong>3 x 6</strong> @Medium</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Romanian DL</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. Hip Thrust</span><span class="block-type">Glúteo</span></div>
+            <div class="block-body"><strong>4 x 10</strong> +peso</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">E. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>4 Rounds</strong>
+20 GHD Sit Ups · 15 Back Ext</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Push <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bench Press</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>5 x 5</strong> @80% · RIR 1-2</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Shoulder Press</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bar Dips (lastrados)</span><span class="block-type">Empuje</span></div>
+            <div class="block-body"><strong>4 x 6-8</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. DB Bench Press Inclinado</span><span class="block-type">Pecho sup.</span></div>
+            <div class="block-body"><strong>4 x 8</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">E. Elevaciones Laterales + Frontales</span><span class="block-type">Hombro</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+10 Lat + 10 Front DB</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>Emom 12'</strong>
+1: 15 Cals Row
+2: 12 Push Ups
+3: Rest</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Pull <span class="day-tag">Día 3</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bent Over Row</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>5 x 5</strong> @Heavy · RIR 2</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Strict Pull Ups (weighted si va bien)</span><span class="block-type">Tracción vert.</span></div>
+            <div class="block-body"><strong>5 x 5-6</strong>
+Rest 2'</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Chin Ups (agarre supino)</span><span class="block-type">Bíceps + espalda</span></div>
+            <div class="block-body"><strong>3 x AMRAP - 2</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. DB Curl (banco inclinado)</span><span class="block-type">Bíceps</span></div>
+            <div class="block-body"><strong>4 x 10</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">E. Face Pull + Band Pull Apart</span><span class="block-type">Salud hombro</span></div>
+            <div class="block-body"><strong>3 x 15+15</strong></div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>21-15-9</strong>
+Cals AAB · KTB Swing @24 · Sit Ups</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 10 -->
+  <section class="week" id="w10">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 10. Intensidad pesada</h2>
+        <div class="goal">Series de 3 en principales @85%. RIR 1. Introducimos un top set.</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>3/sem</div>
+        <div class="param"><strong>RIR</strong>1</div>
+        <div class="param"><strong>Enfoque</strong>Fuerza pesada</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Lower <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza pesada</span></div>
+            <div class="block-body"><strong>Top set 3RM día</strong> · luego <strong>3 x 5</strong> @80%
+Rest 3'</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Romanian DL</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>4 x 5</strong> @Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bulgarian Split BB (Zercher o back)</span><span class="block-type">Unilateral</span></div>
+            <div class="block-body"><strong>3 x 6 por pierna</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. Hip Thrust pesado</span><span class="block-type">Glúteo</span></div>
+            <div class="block-body"><strong>4 x 8</strong></div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">E. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>4 Rounds</strong>
+30" Hollow Hold · 20 V-Ups</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Push <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bench Press</span><span class="block-type">Fuerza pesada</span></div>
+            <div class="block-body"><strong>Top set 3RM día</strong> · luego <strong>3 x 4</strong> @82%</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Shoulder Press</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>4 x 4</strong> @Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bar Dips lastrados</span><span class="block-type">Empuje</span></div>
+            <div class="block-body"><strong>4 x 5-6</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. Close Grip Bench Press</span><span class="block-type">Tríceps</span></div>
+            <div class="block-body"><strong>3 x 8</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">E. Elevaciones Laterales</span><span class="block-type">Hombro</span></div>
+            <div class="block-body"><strong>4 x 12</strong> control</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">Corto</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+250m Row · 15 Push Ups · 30" Rest</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Pull <span class="day-tag">Día 3</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bent Over Row</span><span class="block-type">Fuerza pesada</span></div>
+            <div class="block-body"><strong>Top set 3RM día</strong> · luego <strong>3 x 5</strong> @80%</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Weighted Pull Ups</span><span class="block-type">Tracción vert.</span></div>
+            <div class="block-body"><strong>5 x 3-5</strong> con lastre (chaleco o cinturón)</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. DB Row a una mano</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>4 x 8 por lado</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. DB Curl + Press Francés</span><span class="block-type">Bíceps/Tríceps</span></div>
+            <div class="block-body"><strong>3 x 10 + 10</strong> superset</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">E. Face Pull</span><span class="block-type">Hombro post.</span></div>
+            <div class="block-body"><strong>3 x 15</strong></div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>Emom 12'</strong>
+1: 15 Cals AAB
+2: 12 KTB Swing @24
+3: 10 Burpees</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 11 -->
+  <section class="week" id="w11">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 11. Pico</h2>
+        <div class="goal">Bajamos volumen accesorio, mantenemos intensidad. Prepara el test de S12.</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>3/sem</div>
+        <div class="param"><strong>RIR</strong>1</div>
+        <div class="param"><strong>Enfoque</strong>Pico + descarga accesorios</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Lower <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza pesada</span></div>
+            <div class="block-body"><strong>3 x 3</strong> @85-88%
+Rest 3'</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Romanian DL</span><span class="block-type">Bisagra</span></div>
+            <div class="block-body"><strong>3 x 5</strong> @Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Hip Thrust</span><span class="block-type">Glúteo</span></div>
+            <div class="block-body"><strong>3 x 8</strong></div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+15 V-Ups · 30" Plancha</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Push <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bench Press</span><span class="block-type">Fuerza pesada</span></div>
+            <div class="block-body"><strong>3 x 3</strong> @85-88%</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Shoulder Press</span><span class="block-type">Fuerza</span></div>
+            <div class="block-body"><strong>3 x 4</strong> @Heavy</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bar Dips lastrados</span><span class="block-type">Empuje</span></div>
+            <div class="block-body"><strong>3 x 5</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. Elevaciones Laterales</span><span class="block-type">Hombro</span></div>
+            <div class="block-body"><strong>3 x 12</strong> ligero, sensación</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Pull <span class="day-tag">Día 3</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bent Over Row</span><span class="block-type">Fuerza pesada</span></div>
+            <div class="block-body"><strong>3 x 3</strong> @85-88%</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Weighted Pull Ups</span><span class="block-type">Tracción vert.</span></div>
+            <div class="block-body"><strong>3 x 3</strong> con lastre</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. DB Row</span><span class="block-type">Tracción horiz.</span></div>
+            <div class="block-body"><strong>3 x 8 por lado</strong></div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">D. Curl + Face Pull</span><span class="block-type">Brazo/hombro</span></div>
+            <div class="block-body"><strong>3 x 12 + 12</strong> ligero</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>3 Rounds Easy</strong>
+300m Row · 15 KTB Swing @24 · 30" Rest
+<span class="cue">No fundir el sistema — venimos a testar la próxima semana</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMANA 12 -->
+  <section class="week" id="w12">
+    <div class="week-header">
+      <div class="title">
+        <h2>Semana 12. Test final</h2>
+        <div class="goal">Marcar 3RM en Back Squat, Bench Press, Deadlift. Ver mejora respecto a la S6.</div>
+      </div>
+      <div class="params">
+        <div class="param"><strong>Sesiones</strong>3/sem</div>
+        <div class="param"><strong>RIR</strong>0-1</div>
+        <div class="param"><strong>Enfoque</strong>Test</div>
+      </div>
+    </div>
+    <div class="sessions">
+      <div class="session">
+        <h3>Test 1. Back Squat 3RM <span class="day-tag">Día 1</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat — 3RM</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Aproximaciones + 3RM</strong>
+5x50% · 5x65% · 3x75% · 3x82% · 3x88% · 3RM
+Rest 3-4' entre approaches pesadas</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B. Romanian DL</span><span class="block-type">Accesorio</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @Medium</div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">C. Core</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>3 Rounds</strong>
+15 V-Ups · 45" Plancha</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Test 2. Bench + Deadlift <span class="day-tag">Día 2</span></h3>
+        <div class="blocks">
+          <div class="block strength"><div class="block-head"><span class="block-title">A. Bench Press — 3RM</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Aproximaciones + 3RM</strong>
+Misma dinámica que Back Squat</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Deadlift — 3RM</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Aproximaciones + 3RM</strong>
+Descanso adicional entre approaches (3-5')</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">C. Bent Over Row</span><span class="block-type">Accesorio</span></div>
+            <div class="block-body"><strong>3 x 8</strong> @Medium</div></div>
+        </div>
+      </div>
+      <div class="session">
+        <h3>Cierre + condición <span class="day-tag">Día 3</span></h3>
+        <div class="blocks">
+          <div class="block accessory"><div class="block-head"><span class="block-title">A. Strict Pull Ups (max reps UBK)</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>3 intentos</strong> max reps sin bajar de la barra
+Rest 3' entre intentos</div></div>
+          <div class="block accessory"><div class="block-head"><span class="block-title">B. Push Ups (max reps UBK)</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>3 intentos</strong> max reps sin parar</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">C. Benchmark condicional</span><span class="block-type">MetCon Test</span></div>
+            <div class="block-body"><strong>Cindy (Amrap 20')</strong>
+5 Pull Ups · 10 Push Ups · 15 Air Squats
+<span class="cue">Anota rondas para comparar en el siguiente ciclo</span></div></div>
+          <div class="block core"><div class="block-head"><span class="block-title">D. Core final</span><span class="block-type">Core</span></div>
+            <div class="block-body"><strong>Max Hollow Hold</strong>
+Rest 90"
+<strong>Max Plancha</strong></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="legend">
+    <div class="item"><span class="dot" style="background:var(--strength)"></span>Fuerza (compound principal)</div>
+    <div class="item"><span class="dot" style="background:var(--accessory)"></span>Accesorio / hipertrofia</div>
+    <div class="item"><span class="dot" style="background:var(--conditioning)"></span>Conditioning / MetCon</div>
+    <div class="item"><span class="dot" style="background:var(--core)"></span>Core</div>
+    <div class="item abbrev">RIR = Reps in Reserve · AMRAP = As Many Rounds/Reps As Possible · Emom = Every Minute on the Minute · AAB = Assault Air Bike · DB = Dumbbell · KTB = Kettlebell · BB = Barbell · DU = Double Unders · SU = Single Unders · UBK = Unbroken</div>
+  </div>
+
+  <footer class="notes">
+    <strong>Notas de aplicación</strong>
+    · Calienta 8-10' antes de cada sesión: movilidad + activación + progresión al peso de trabajo.<br>
+    · Si un día no llegas al RIR/peso previsto, mantén y no fuerces. Un día malo no rompe el ciclo.<br>
+    · Días entre sesiones: descanso activo (caminata, movilidad) o cardio muy suave.<br>
+    · Alimentación: superávit ligero (300-500 kcal) para ganar músculo · proteína 1,8-2,2 g/kg.<br>
+    · Sueño ≥ 7,5 h. Sin esto la recuperación no llega y la progresión se estanca.<br>
+    · Registra pesos y reps cada sesión (papel, Notes, o app). Sin registro no hay progresión medible.<br>
+    · Al terminar la S12 compara 3RM con el 5RM de S6 (1RM estimado = 3RM × 1.08 vs 5RM × 1.15).
+  </footer>
+
+</div>
+
+<script>
+  const STORAGE_KEY = 'rutina_12_semanas_log_v1';
+
+  const buttons = document.querySelectorAll('nav.weeks button');
+  const weekSections = document.querySelectorAll('section.week');
+  const progressView = document.getElementById('progress-view');
+  const diarioView = document.getElementById('diario-view');
+  const toggleProgressBtn = document.getElementById('toggle-progress');
+  const toggleDiarioBtn = document.getElementById('toggle-diario');
+
+  function closeAuxViews() {
+    if (progressView.classList.contains('active')) {
+      progressView.classList.remove('active');
+      toggleProgressBtn.textContent = 'Ver progreso';
+    }
+    if (diarioView.classList.contains('active')) {
+      diarioView.classList.remove('active');
+      toggleDiarioBtn.textContent = 'Diario';
+    }
+  }
+
+  // ---------- Semana navigation ----------
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const w = btn.dataset.w;
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      closeAuxViews();
+      weekSections.forEach(s => s.classList.toggle('active', s.id === 'w' + w));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ---------- Storage local ----------
+  function loadLog() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch { return {}; }
+  }
+  function saveLog(data) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+    catch (e) { alert('No se pudo guardar. Almacenamiento local no disponible o lleno.'); }
+  }
+
+  // ---------- Sync con Google Sheets (Apps Script Web App) ----------
+  const URL_KEY = 'rutina_apps_script_url';
+  let apiUrl = localStorage.getItem(URL_KEY) || '';
+  const syncStatusEl = document.getElementById('sync-status');
+
+  function setSyncStatus(msg, cls) {
+    syncStatusEl.className = cls || '';
+    syncStatusEl.textContent = msg;
+  }
+
+  function updateSyncStatus() {
+    if (!apiUrl) {
+      setSyncStatus('sync no configurado');
+      return;
+    }
+    const data = loadLog();
+    const total = Object.values(data).reduce((n, v) => n + (v.entries?.length || 0), 0);
+    setSyncStatus(total + ' registros locales', 'ok');
+  }
+
+  async function pullFromSheets(silent) {
+    if (!apiUrl) return;
+    if (!silent) setSyncStatus('sincronizando…', 'syncing');
+    try {
+      const res = await fetch(apiUrl + '?t=' + Date.now(), { method: 'GET', redirect: 'follow' });
+      const j = await res.json();
+      if (!j.ok) throw new Error(j.error || 'respuesta inválida');
+      saveLog(j.data || {});
+      refreshAllHistories();
+      if (progressView.classList.contains('active')) renderProgress();
+      if (diarioView.classList.contains('active')) renderDiario();
+      const total = Object.values(j.data || {}).reduce((n, v) => n + (v.entries?.length || 0), 0);
+      setSyncStatus('sincronizado · ' + total + ' registros', 'ok');
+      return true;
+    } catch (err) {
+      setSyncStatus('error sync: ' + err.message, 'error');
+      return false;
+    }
+  }
+
+  async function pushToSheets(payload) {
+    if (!apiUrl) return true;
+    try {
+      setSyncStatus('guardando…', 'syncing');
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
+        redirect: 'follow'
+      });
+      const j = await res.json();
+      if (!j.ok) throw new Error(j.error || 'respuesta inválida');
+      setSyncStatus('guardado en Sheet · ' + new Date().toLocaleTimeString(), 'ok');
+      return true;
+    } catch (err) {
+      setSyncStatus('error sync: ' + err.message, 'error');
+      return false;
+    }
+  }
+
+  // ---------- Normalizar título (quitar "A. ", "B1. " etc.) ----------
+  function cleanTitle(t) {
+    return (t || '').replace(/^[A-Z]\d?\.\s*/, '').trim();
+  }
+
+  // ---------- Inyectar log form en cada bloque ----------
+  // Los bloques de core y skill (gimnásticos) son bodyweight → no piden peso ni RM.
+  const BODYWEIGHT_BLOCK_CLASSES = ['core', 'skill'];
+
+  function isBodyweightBlock(block) {
+    return BODYWEIGHT_BLOCK_CLASSES.some(c => block.classList.contains(c));
+  }
+
+  document.querySelectorAll('section.week').forEach(week => {
+    const wId = week.id;
+    week.querySelectorAll('.session').forEach((sess, sIdx) => {
+      sess.querySelectorAll('.block').forEach((block, bIdx) => {
+        const rawTitle = block.querySelector('.block-title')?.textContent.trim() || 'bloque';
+        const id = wId + '-s' + sIdx + '-' + rawTitle.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 40);
+        block.dataset.blockId = id;
+        block.dataset.blockTitle = rawTitle;
+        block.appendChild(buildLogUI(id, rawTitle, isBodyweightBlock(block)));
+      });
+    });
+  });
+
+  function buildLogUI(id, rawTitle, bodyweight) {
+    const wrap = document.createElement('div');
+    wrap.className = 'block-log-container';
+
+    const form = document.createElement('div');
+    form.className = 'block-log';
+    const today = new Date().toISOString().slice(0, 10);
+    const weightInput = bodyweight
+      ? ''
+      : '<input type="text" class="log-weight" placeholder="Peso (kg)" inputmode="decimal">';
+    const rmLabel = bodyweight
+      ? ''
+      : '<label class="log-rm" title="Marcar como RM a estas reps"><input type="checkbox" class="log-rm-check"> RM</label>';
+    form.innerHTML = ''
+      + '<input type="date" class="log-date" value="' + today + '">'
+      + weightInput
+      + '<input type="text" class="log-reps" placeholder="Reps/Series/Tiempo" inputmode="text">'
+      + rmLabel
+      + '<input type="text" class="log-notes" placeholder="Notas (opcional)">'
+      + '<button class="log-save" type="button">Guardar</button>';
+
+    const history = document.createElement('div');
+    history.className = 'log-history';
+
+    wrap.appendChild(form);
+    wrap.appendChild(history);
+    renderHistory(id, history);
+
+    form.querySelector('.log-save').addEventListener('click', () => {
+      const date = form.querySelector('.log-date').value;
+      const weightEl = form.querySelector('.log-weight');
+      const rmEl = form.querySelector('.log-rm-check');
+      const weight = weightEl ? weightEl.value.trim() : '';
+      const reps = form.querySelector('.log-reps').value.trim();
+      const notes = form.querySelector('.log-notes').value.trim();
+      const isRm = rmEl ? rmEl.checked : false;
+      if (!weight && !reps && !notes) { toast('Nada que guardar'); return; }
+      const entry = { date, weight, reps, notes, rm: isRm ? '1' : '', ts: Date.now() };
+      const data = loadLog();
+      if (!data[id]) data[id] = { title: rawTitle, entries: [] };
+      data[id].title = rawTitle;
+      data[id].entries.push(entry);
+      saveLog(data);
+      if (weightEl) weightEl.value = '';
+      form.querySelector('.log-reps').value = '';
+      form.querySelector('.log-notes').value = '';
+      if (rmEl) rmEl.checked = false;
+      renderHistory(id, history);
+      toast(isRm ? '¡RM guardado!' : 'Guardado');
+      pushToSheets({ action: 'add', blockId: id, title: rawTitle, entry });
+    });
+
+    return wrap;
+  }
+
+  function renderHistory(id, container) {
+    const data = loadLog();
+    const entries = (data[id]?.entries || []).slice().sort((a, b) => (b.ts || 0) - (a.ts || 0));
+    if (entries.length === 0) {
+      container.innerHTML = '<div class="empty">Sin registros</div>';
+      return;
+    }
+    container.innerHTML = entries.map(e => {
+      const bits = [];
+      if (e.date) bits.push('<strong>' + e.date + '</strong>');
+      if (e.weight) bits.push(e.weight + ' kg');
+      if (e.reps) bits.push(e.reps);
+      if (e.notes) bits.push('<em>' + escapeHtml(e.notes) + '</em>');
+      const rmBadge = e.rm ? '<span class="rm-badge">RM</span>' : '';
+      const cls = e.rm ? 'entry is-rm' : 'entry';
+      return '<div class="' + cls + '"><span class="txt">' + rmBadge + bits.join(' · ') + '</span>'
+        + '<button class="del" data-ts="' + e.ts + '" title="Borrar">×</button></div>';
+    }).join('');
+    container.querySelectorAll('.del').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ts = parseInt(btn.dataset.ts);
+        const data = loadLog();
+        if (data[id]) {
+          data[id].entries = data[id].entries.filter(e => e.ts !== ts);
+          saveLog(data);
+        }
+        renderHistory(id, container);
+        toast('Borrado');
+        pushToSheets({ action: 'delete', blockId: id, ts });
+      });
+    });
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  // ---------- Toast ----------
+  function toast(msg) {
+    let t = document.querySelector('.toast');
+    if (!t) {
+      t = document.createElement('div');
+      t.className = 'toast';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 1800);
+  }
+
+  // ---------- Export ----------
+  document.getElementById('export-data').addEventListener('click', () => {
+    const data = loadLog();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const date = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = 'rutina_log_' + date + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    toast('Exportado');
+  });
+
+  // ---------- Import ----------
+  document.getElementById('import-data').addEventListener('click', () => {
+    document.getElementById('import-file').click();
+  });
+  document.getElementById('import-file').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const imported = JSON.parse(reader.result);
+        if (typeof imported !== 'object' || imported === null) throw new Error('Formato inválido');
+        if (!confirm('¿Reemplazar el log actual con el fichero importado?')) return;
+        saveLog(imported);
+        refreshAllHistories();
+        if (progressView.classList.contains('active')) renderProgress();
+        if (diarioView.classList.contains('active')) renderDiario();
+        toast('Importado');
+        pushToSheets({ action: 'replace', data: imported });
+      } catch (err) {
+        alert('Fichero inválido: ' + err.message);
+      }
+      e.target.value = '';
+    };
+    reader.readAsText(file);
+  });
+
+  // ---------- Clear ----------
+  document.getElementById('clear-data').addEventListener('click', () => {
+    if (!confirm('¿Borrar todo el histórico? Esto no se puede deshacer.\n\nConsejo: exporta primero por si acaso.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    refreshAllHistories();
+    if (progressView.classList.contains('active')) renderProgress();
+    if (diarioView.classList.contains('active')) renderDiario();
+    updateSyncStatus();
+    toast('Log borrado');
+    pushToSheets({ action: 'clear' });
+  });
+
+  function refreshAllHistories() {
+    document.querySelectorAll('.block[data-block-id]').forEach(b => {
+      const hist = b.querySelector('.log-history');
+      if (hist) renderHistory(b.dataset.blockId, hist);
+    });
+  }
+
+  // ---------- Progress view ----------
+  toggleProgressBtn.addEventListener('click', () => {
+    const isOpen = progressView.classList.contains('active');
+    if (isOpen) {
+      progressView.classList.remove('active');
+      const activeBtn = document.querySelector('nav.weeks button.active');
+      const wId = activeBtn ? 'w' + activeBtn.dataset.w : 'w1';
+      weekSections.forEach(s => s.classList.toggle('active', s.id === wId));
+      toggleProgressBtn.textContent = 'Ver progreso';
+    } else {
+      diarioView.classList.remove('active');
+      toggleDiarioBtn.textContent = 'Diario';
+      weekSections.forEach(s => s.classList.remove('active'));
+      progressView.classList.add('active');
+      renderProgress();
+      toggleProgressBtn.textContent = 'Volver a la rutina';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  // ---------- Diario view ----------
+  const DIARIO_BLOCK_PREFIX = 'diario:';
+
+  function slugify(s) {
+    return (s || '').toLowerCase()
+      .normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '')
+      .slice(0, 60) || 'sin_nombre';
+  }
+
+  toggleDiarioBtn.addEventListener('click', () => {
+    const isOpen = diarioView.classList.contains('active');
+    if (isOpen) {
+      diarioView.classList.remove('active');
+      const activeBtn = document.querySelector('nav.weeks button.active');
+      const wId = activeBtn ? 'w' + activeBtn.dataset.w : 'w1';
+      weekSections.forEach(s => s.classList.toggle('active', s.id === wId));
+      toggleDiarioBtn.textContent = 'Diario';
+    } else {
+      progressView.classList.remove('active');
+      toggleProgressBtn.textContent = 'Ver progreso';
+      weekSections.forEach(s => s.classList.remove('active'));
+      diarioView.classList.add('active');
+      renderDiario();
+      toggleDiarioBtn.textContent = 'Volver a la rutina';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  const diarioForm = document.querySelector('#diario-view .diario-form');
+  diarioForm.querySelector('.d-date').value = new Date().toISOString().slice(0, 10);
+  diarioForm.querySelector('.d-save').addEventListener('click', () => {
+    const exercise = diarioForm.querySelector('.d-exercise').value.trim();
+    const date = diarioForm.querySelector('.d-date').value;
+    const weight = diarioForm.querySelector('.d-weight').value.trim();
+    const reps = diarioForm.querySelector('.d-reps').value.trim();
+    const notes = diarioForm.querySelector('.d-notes').value.trim();
+    const isRm = diarioForm.querySelector('.d-rm').checked;
+    if (!exercise) { toast('Falta el ejercicio'); return; }
+    if (!weight && !reps && !notes) { toast('Nada que guardar'); return; }
+    const blockId = DIARIO_BLOCK_PREFIX + slugify(exercise);
+    const entry = { date, weight, reps, notes, rm: isRm ? '1' : '', ts: Date.now() };
+    const data = loadLog();
+    if (!data[blockId]) data[blockId] = { title: exercise, entries: [] };
+    data[blockId].title = exercise;
+    data[blockId].entries.push(entry);
+    saveLog(data);
+    diarioForm.querySelector('.d-weight').value = '';
+    diarioForm.querySelector('.d-reps').value = '';
+    diarioForm.querySelector('.d-notes').value = '';
+    diarioForm.querySelector('.d-rm').checked = false;
+    diarioForm.querySelector('.d-exercise').focus();
+    renderDiario();
+    refreshAllHistories();
+    updateSyncStatus();
+    toast(isRm ? '¡RM guardado!' : 'Guardado');
+    pushToSheets({ action: 'add', blockId, title: exercise, entry });
+  });
+
+  function renderDiario() {
+    const container = document.getElementById('diario-content');
+    const data = loadLog();
+    // Recolectar TODAS las entradas (plan + diario) para verlas agrupadas por día
+    const flat = [];
+    Object.entries(data).forEach(([id, val]) => {
+      if (!val.entries) return;
+      const name = cleanTitle(val.title);
+      const isDiario = id.startsWith(DIARIO_BLOCK_PREFIX);
+      val.entries.forEach(e => flat.push({ ...e, blockId: id, name, isDiario }));
+    });
+    if (flat.length === 0) {
+      container.innerHTML = '<p style="color:var(--muted); text-align:center; padding:24px 0;">Sin entradas. Rellena el formulario de arriba para empezar.</p>';
+      return;
+    }
+    // Agrupar por fecha (fallback: fecha del ts)
+    const byDay = {};
+    flat.forEach(e => {
+      const day = e.date || new Date(e.ts || 0).toISOString().slice(0, 10);
+      if (!byDay[day]) byDay[day] = [];
+      byDay[day].push(e);
+    });
+    const days = Object.keys(byDay).sort().reverse();
+    container.innerHTML = days.map(day => {
+      const entries = byDay[day].slice().sort((a, b) => (b.ts || 0) - (a.ts || 0));
+      const rows = entries.map(e => {
+        const bits = [];
+        bits.push('<strong>' + escapeHtml(e.name) + '</strong>');
+        if (e.weight) bits.push(e.weight + ' kg');
+        if (e.reps) bits.push(e.reps);
+        if (e.notes) bits.push('<em>' + escapeHtml(e.notes) + '</em>');
+        if (!e.isDiario) bits.push('<span style="color:var(--muted); font-size:10px;">[plan]</span>');
+        const rmBadge = e.rm ? '<span class="rm-badge">RM</span>' : '';
+        const cls = e.rm ? 'entry is-rm' : 'entry';
+        return '<div class="' + cls + '"><span class="txt">' + rmBadge + bits.join(' · ') + '</span>'
+          + '<button class="del" data-ts="' + e.ts + '" data-bid="' + e.blockId + '" title="Borrar">×</button></div>';
+      }).join('');
+      return ''
+        + '<div class="diario-day">'
+        + '<div class="day-head">' + day + '<span class="count">' + entries.length + ' entrada' + (entries.length === 1 ? '' : 's') + '</span></div>'
+        + rows
+        + '</div>';
+    }).join('');
+    container.querySelectorAll('.del').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ts = parseInt(btn.dataset.ts);
+        const bid = btn.dataset.bid;
+        const data = loadLog();
+        if (data[bid]) {
+          data[bid].entries = data[bid].entries.filter(e => e.ts !== ts);
+          saveLog(data);
+        }
+        renderDiario();
+        refreshAllHistories();
+        updateSyncStatus();
+        toast('Borrado');
+        pushToSheets({ action: 'delete', blockId: bid, ts });
+      });
+    });
+  }
+
+  // Extrae la primera cifra entera de una cadena de reps ("5", "5x3", "3 x 5", "AMRAP 8" → 5, 5, 5, 8)
+  function parseRepsNumber(reps) {
+    const m = (reps || '').match(/\d+/);
+    return m ? parseInt(m[0], 10) : null;
+  }
+
+  function parseWeight(w) {
+    const n = parseFloat((w || '').replace(',', '.'));
+    return isNaN(n) ? null : n;
+  }
+
+  function renderRmSummary() {
+    const slot = document.getElementById('rm-summary-slot');
+    const data = loadLog();
+    // Recorrer todas las entradas marcadas como RM y quedarse con el mejor peso por (ejercicio, repsNum)
+    const best = {}; // key: name || repsNum → { name, repsNum, weight, date, ts }
+    Object.entries(data).forEach(([id, val]) => {
+      if (!val.entries) return;
+      const name = cleanTitle(val.title);
+      val.entries.forEach(e => {
+        if (!e.rm) return;
+        const w = parseWeight(e.weight);
+        const r = parseRepsNumber(e.reps);
+        if (w == null) return;
+        const key = name + '||' + (r == null ? '?' : r);
+        const cur = best[key];
+        if (!cur || w > cur.weight || (w === cur.weight && (e.ts || 0) > (cur.ts || 0))) {
+          best[key] = { name, repsNum: r, weight: w, date: e.date || '', ts: e.ts || 0, rawReps: e.reps || '' };
+        }
+      });
+    });
+    const rms = Object.values(best);
+    if (rms.length === 0) {
+      slot.innerHTML = '<div class="rm-summary"><h4>RMs vigentes</h4><div class="empty">Aún no has marcado ninguna entrada como RM. Marca la casilla "RM" al guardar un peso para verlo aquí.</div></div>';
+      return;
+    }
+    rms.sort((a, b) => {
+      const cmp = a.name.localeCompare(b.name, 'es');
+      if (cmp !== 0) return cmp;
+      return (a.repsNum || 999) - (b.repsNum || 999);
+    });
+    const rows = rms.map(r => ''
+      + '<tr>'
+      + '<td>' + escapeHtml(r.name) + '</td>'
+      + '<td>' + (r.repsNum != null ? r.repsNum + ' rep' + (r.repsNum === 1 ? '' : 's') : escapeHtml(r.rawReps) || '—') + '</td>'
+      + '<td class="weight">' + r.weight + ' kg</td>'
+      + '<td>' + (r.date || '') + '</td>'
+      + '</tr>').join('');
+    slot.innerHTML = ''
+      + '<div class="rm-summary">'
+      + '<h4>RMs vigentes · ' + rms.length + '</h4>'
+      + '<table>'
+      + '<thead><tr><th>Ejercicio</th><th>Reps</th><th>Peso</th><th>Fecha</th></tr></thead>'
+      + '<tbody>' + rows + '</tbody>'
+      + '</table>'
+      + '</div>';
+  }
+
+  function renderProgress() {
+    renderRmSummary();
+    const container = document.getElementById('progress-content');
+    const data = loadLog();
+    // Agrupar por título limpio
+    const byExercise = {};
+    Object.entries(data).forEach(([id, val]) => {
+      if (!val.entries || !val.entries.length) return;
+      const name = cleanTitle(val.title);
+      if (!byExercise[name]) byExercise[name] = [];
+      val.entries.forEach(e => byExercise[name].push({ ...e, blockId: id }));
+    });
+    if (Object.keys(byExercise).length === 0) {
+      container.innerHTML = '<p style="color:var(--muted); text-align:center; padding:32px 0;">Aún no hay datos registrados. Guarda pesos en los ejercicios para verlos aquí.</p>';
+      return;
+    }
+    const sorted = Object.entries(byExercise).sort(([a], [b]) => a.localeCompare(b, 'es'));
+    container.innerHTML = sorted.map(([name, entries]) => {
+      entries.sort((a, b) => (a.ts || 0) - (b.ts || 0));
+      // Marcar PR (mejor peso numérico global del ejercicio, con o sin flag RM)
+      let maxW = -Infinity;
+      entries.forEach(e => {
+        const w = parseWeight(e.weight);
+        if (w != null && w > maxW) maxW = w;
+      });
+      const rows = entries.map(e => {
+        const w = parseWeight(e.weight);
+        const isPr = w != null && w === maxW && maxW > 0;
+        const isRm = !!e.rm;
+        const trCls = isRm ? ' class="is-rm"' : '';
+        const wCls = isRm ? ' class="rm-cell" title="Marcado como RM"' : (isPr ? ' class="pr" title="Máximo peso del ejercicio"' : '');
+        return '<tr' + trCls + '>'
+          + '<td>' + (e.date || '') + '</td>'
+          + '<td' + wCls + '>' + (e.weight || '') + (e.weight ? ' kg' : '') + '</td>'
+          + '<td>' + (e.reps || '') + '</td>'
+          + '<td>' + (isRm ? '<span class="rm-badge">RM</span>' : '') + '</td>'
+          + '<td>' + escapeHtml(e.notes || '') + '</td>'
+          + '</tr>';
+      }).join('');
+      return ''
+        + '<div class="exercise-progress">'
+        + '<div class="name">' + escapeHtml(name) + '<span class="count">' + entries.length + ' registro' + (entries.length === 1 ? '' : 's') + '</span></div>'
+        + '<table class="progress-table">'
+        + '<thead><tr><th>Fecha</th><th>Peso</th><th>Resultado</th><th>RM</th><th>Notas</th></tr></thead>'
+        + '<tbody>' + rows + '</tbody>'
+        + '</table>'
+        + '</div>';
+    }).join('');
+  }
+
+  // ---------- Config UI ----------
+  const configPanel = document.getElementById('config-panel');
+  const configUrlInput = document.getElementById('config-url');
+  const configResult = document.getElementById('config-result');
+  configUrlInput.value = apiUrl;
+
+  document.getElementById('config-btn').addEventListener('click', () => {
+    configPanel.classList.toggle('open');
+  });
+
+  function showConfigResult(msg, cls) {
+    configResult.className = 'show ' + (cls || '');
+    configResult.textContent = msg;
+  }
+
+  document.getElementById('config-save').addEventListener('click', () => {
+    const v = configUrlInput.value.trim();
+    apiUrl = v;
+    if (v) localStorage.setItem(URL_KEY, v);
+    else localStorage.removeItem(URL_KEY);
+    showConfigResult(v ? 'URL guardada. Prueba conexión para verificar.' : 'URL borrada. El sync queda desactivado.', 'ok');
+    updateSyncStatus();
+  });
+
+  document.getElementById('config-test').addEventListener('click', async () => {
+    if (!apiUrl) { showConfigResult('Guarda una URL primero.', 'err'); return; }
+    showConfigResult('Probando…');
+    try {
+      const res = await fetch(apiUrl + '?t=' + Date.now(), { method: 'GET' });
+      const j = await res.json();
+      if (j.ok) {
+        const total = Object.values(j.data || {}).reduce((n, v) => n + (v.entries?.length || 0), 0);
+        showConfigResult('OK. El Sheet tiene ' + total + ' registros.', 'ok');
+      } else {
+        showConfigResult('Respuesta del script: ' + (j.error || 'desconocido'), 'err');
+      }
+    } catch (err) {
+      showConfigResult('Error de red: ' + err.message + '. Comprueba que la URL termina en /exec y que el acceso es "Cualquiera".', 'err');
+    }
+  });
+
+  document.getElementById('config-pull').addEventListener('click', async () => {
+    if (!apiUrl) { showConfigResult('Guarda una URL primero.', 'err'); return; }
+    if (!confirm('¿Descargar el log del Sheet y sobrescribir el log local?')) return;
+    const ok = await pullFromSheets();
+    showConfigResult(ok ? 'Log local reemplazado con datos del Sheet.' : 'No se pudo descargar. Ver estado arriba.', ok ? 'ok' : 'err');
+  });
+
+  document.getElementById('config-push').addEventListener('click', async () => {
+    if (!apiUrl) { showConfigResult('Guarda una URL primero.', 'err'); return; }
+    if (!confirm('¿Subir el log local al Sheet reemplazando lo que haya?')) return;
+    const data = loadLog();
+    const ok = await pushToSheets({ action: 'replace', data });
+    showConfigResult(ok ? 'Log local subido al Sheet.' : 'No se pudo subir. Ver estado arriba.', ok ? 'ok' : 'err');
+  });
+
+  // ---------- Pull inicial al cargar ----------
+  updateSyncStatus();
+  if (apiUrl) {
+    pullFromSheets(true);
+  }
+</script>
+</body>
+</html>
