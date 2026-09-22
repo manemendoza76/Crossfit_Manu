@@ -711,9 +711,9 @@
   <div class="subtitle">Estado físico + ganancia de músculo. Basado en el pool de ejercicios de Reyner</div>
   <div class="meta">
     <span><strong>Atleta:</strong> Ángel</span>
-    <span><strong>Duración:</strong> 6 meses (~26 semanas)</span>
-    <span><strong>Bloque A (S1-6):</strong> 2 sesiones/sem</span>
-    <span><strong>Bloque B (S7-12):</strong> 3 sesiones/sem</span>
+    <span><strong>Inicio:</strong> lun 14 sep 2026</span>
+    <span><strong>Fin:</strong> dom 14 mar 2027</span>
+    <span><strong>Duración:</strong> 26 semanas · 2 ciclos + cierre</span>
     <span><strong>Enfoque:</strong> hipertrofia + condición</span>
   </div>
 </header>
@@ -722,34 +722,25 @@
 
   <div class="philosophy">
     <h2>Filosofía y progresión</h2>
-    <p>Plan de 6 meses estructurado en dos ciclos de 12 semanas. Solo patrones básicos: sentadilla, bisagra de cadera, empuje horizontal, empuje vertical, tracción horizontal, tracción vertical, core y condición metabólica. <strong>Fuera</strong> HSPU / HSW / RMU / BMU / muscle-ups / kipping avanzado — priorizamos ejecución estricta y sobrecarga progresiva.</p>
+    <p>Plan de 6 meses estructurado en dos ciclos de 12 semanas + 2 semanas de cierre. Solo patrones básicos: sentadilla, bisagra de cadera, empuje horizontal, empuje vertical, tracción horizontal, tracción vertical, core y condición metabólica. <strong>Fuera</strong> HSPU / HSW / RMU / BMU / muscle-ups / kipping avanzado — priorizamos ejecución estricta y sobrecarga progresiva.</p>
     <div class="phases">
       <div class="phase">
-        <strong>Ciclo 1. Meses 1-3 (Semanas 1-12)</strong>
+        <strong>Ciclo 1 · 14 sep – 6 dic 2026 (S1-S12)</strong>
         Bloque A (S1-6): full body A/B, 2 sesiones/sem, RIR 3→2, cierre con 5RM. Bloque B (S7-12): split Lower/Push/Pull, 3 sesiones/sem, RIR 2→1, cierre con 3RM.
       </div>
       <div class="phase">
-        <strong>Ciclo 2. Meses 4-6 (Semanas 13-24)</strong>
-        Repite la estructura del Ciclo 1 subiendo carga sobre los RMs registrados. El objetivo del segundo ciclo es superar los RMs del primero (usa el panel "RMs vigentes" como referencia).
+        <strong>Ciclo 2 · 7 dic 2026 – 28 feb 2027 (S13-S24)</strong>
+        Repite la estructura del Ciclo 1 subiendo carga sobre los RMs registrados. Usa el panel "RMs vigentes" como referencia para superar cada marca del primer ciclo.
+      </div>
+      <div class="phase" style="grid-column:1 / -1">
+        <strong>Cierre · 1 – 14 mar 2027 (S25-S26)</strong>
+        Semana 25: descarga (clon de S6 con volumen reducido). Semana 26: test final del programa (clon de S12) — RM en Back Squat, Bench Press, Deadlift, Shoulder Press.
       </div>
     </div>
   </div>
 
   <nav class="weeks" id="nav-weeks">
-    <span class="phase-tag">Bloque A</span>
-    <button data-w="1" class="active">S1</button>
-    <button data-w="2">S2</button>
-    <button data-w="3">S3</button>
-    <button data-w="4">S4</button>
-    <button data-w="5">S5</button>
-    <button data-w="6">S6</button>
-    <span class="phase-tag">Bloque B</span>
-    <button data-w="7">S7</button>
-    <button data-w="8">S8</button>
-    <button data-w="9">S9</button>
-    <button data-w="10">S10</button>
-    <button data-w="11">S11</button>
-    <button data-w="12">S12</button>
+    <!-- Rellenado dinámicamente por JS con las 26 semanas y sus rangos de fechas -->
   </nav>
 
   <div class="toolbar">
@@ -1644,13 +1635,148 @@ Rest 90"
     · Alimentación: superávit ligero (300-500 kcal) para ganar músculo · proteína 1,8-2,2 g/kg.<br>
     · Sueño ≥ 7,5 h. Sin esto la recuperación no llega y la progresión se estanca.<br>
     · Registra pesos y reps cada sesión (papel, Notes, o app). Sin registro no hay progresión medible.<br>
-    · Al terminar la S12 compara 3RM con el 5RM de S6 (1RM estimado = 3RM × 1.08 vs 5RM × 1.15).
+    · Al terminar la S12 compara 3RM con el 5RM de S6 (1RM estimado = 3RM × 1.08 vs 5RM × 1.15).<br>
+    · Al terminar la S24 (Ciclo 2) haz el mismo test y compara con S12 — objetivo: superar los RMs del primer ciclo.<br>
+    · S26 (test final del programa) — RM en Back Squat, Bench Press, Deadlift, Shoulder Press. Registra todo con la casilla RM marcada.
   </footer>
 
 </div>
 
 <script>
   const STORAGE_KEY = 'rutina_12_semanas_log_v1';
+
+  // ============================================================
+  // Bootstrap del programa de 26 semanas con fechas dinámicas
+  // Para cambiar la fecha de inicio, edita PROGRAM_START (lunes).
+  // Todo lo demás (nav, cabeceras, clonado de C2 y cierre) se recalcula.
+  // ============================================================
+  const PROGRAM_START = '2026-09-14'; // Lunes de la Semana 1
+  const TOTAL_WEEKS = 26;
+  const MONTHS_ES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+
+  const WEEK_TITLES = {
+    1: 'Adaptación',
+    2: 'Consolidación',
+    3: 'Volumen',
+    4: 'Intensidad',
+    5: 'Fuerza',
+    6: 'Test + descarga suave',
+    7: 'Nuevo split (3/sem)',
+    8: 'Subir intensidad',
+    9: 'Volumen medio-alto',
+    10: 'Intensidad pesada',
+    11: 'Pico',
+    12: 'Test final Ciclo 1',
+    13: 'Adaptación · Ciclo 2',
+    14: 'Consolidación · Ciclo 2',
+    15: 'Volumen · Ciclo 2',
+    16: 'Intensidad · Ciclo 2',
+    17: 'Fuerza · Ciclo 2',
+    18: 'Test + descarga · Ciclo 2',
+    19: 'Nuevo split · Ciclo 2',
+    20: 'Subir intensidad · Ciclo 2',
+    21: 'Volumen medio-alto · Ciclo 2',
+    22: 'Intensidad pesada · Ciclo 2',
+    23: 'Pico · Ciclo 2',
+    24: 'Test final Ciclo 2',
+    25: 'Descarga',
+    26: 'Test final del programa'
+  };
+
+  // Fuente de contenido para las semanas del Ciclo 2 y el cierre.
+  // Ej: la S13 clona el DOM de la S1, S14 el de la S2, etc.
+  const CLONE_SOURCE = {
+    13: 1, 14: 2, 15: 3, 16: 4, 17: 5, 18: 6,
+    19: 7, 20: 8, 21: 9, 22: 10, 23: 11, 24: 12,
+    25: 6,  // Cierre: descarga (usa el patrón de S6)
+    26: 12  // Cierre: test final (usa el patrón de S12)
+  };
+
+  // Agrupaciones para las etiquetas del nav (phase-tag).
+  const NAV_GROUPS = [
+    { tag: 'C1 · Bloque A', weeks: [1, 2, 3, 4, 5, 6] },
+    { tag: 'C1 · Bloque B', weeks: [7, 8, 9, 10, 11, 12] },
+    { tag: 'C2 · Bloque A', weeks: [13, 14, 15, 16, 17, 18] },
+    { tag: 'C2 · Bloque B', weeks: [19, 20, 21, 22, 23, 24] },
+    { tag: 'Cierre', weeks: [25, 26] }
+  ];
+
+  function weekStartDate(n) {
+    const [y, m, d] = PROGRAM_START.split('-').map(Number);
+    const start = new Date(y, m - 1, d);
+    start.setDate(start.getDate() + (n - 1) * 7);
+    return start;
+  }
+
+  function formatDateRange(n) {
+    const start = weekStartDate(n);
+    const end = new Date(start);
+    end.setDate(end.getDate() + 6);
+    const sd = start.getDate();
+    const ed = end.getDate();
+    const sm = MONTHS_ES[start.getMonth()];
+    const em = MONTHS_ES[end.getMonth()];
+    if (sm === em) return sd + '-' + ed + ' ' + sm;
+    return sd + ' ' + sm + ' - ' + ed + ' ' + em;
+  }
+
+  function formatShortDate(n) {
+    const s = weekStartDate(n);
+    return s.getDate() + '/' + (s.getMonth() + 1);
+  }
+
+  function weekHeaderLabel(n) {
+    return 'S' + n + ' · ' + formatDateRange(n) + ' · ' + (WEEK_TITLES[n] || '');
+  }
+
+  function buildNav() {
+    const nav = document.getElementById('nav-weeks');
+    nav.innerHTML = '';
+    NAV_GROUPS.forEach(group => {
+      const tag = document.createElement('span');
+      tag.className = 'phase-tag';
+      tag.textContent = group.tag;
+      nav.appendChild(tag);
+      group.weeks.forEach(n => {
+        const btn = document.createElement('button');
+        btn.dataset.w = n;
+        btn.textContent = formatShortDate(n);
+        btn.title = 'Semana ' + n + ' · ' + formatDateRange(n) + ' · ' + (WEEK_TITLES[n] || '');
+        if (n === 1) btn.classList.add('active');
+        nav.appendChild(btn);
+      });
+    });
+  }
+
+  function updateOriginalWeekHeaders() {
+    for (let n = 1; n <= 12; n++) {
+      const wk = document.getElementById('w' + n);
+      const h2 = wk && wk.querySelector('.week-header h2');
+      if (h2) h2.textContent = weekHeaderLabel(n);
+    }
+  }
+
+  function cloneCycle2AndClosure() {
+    const w12 = document.getElementById('w12');
+    if (!w12) return;
+    const parent = w12.parentNode;
+    const anchor = w12.nextSibling;
+    Object.keys(CLONE_SOURCE).map(Number).sort((a, b) => a - b).forEach(target => {
+      const src = document.getElementById('w' + CLONE_SOURCE[target]);
+      if (!src) return;
+      const clone = src.cloneNode(true);
+      clone.id = 'w' + target;
+      clone.classList.remove('active');
+      const h2 = clone.querySelector('.week-header h2');
+      if (h2) h2.textContent = weekHeaderLabel(target);
+      parent.insertBefore(clone, anchor);
+    });
+  }
+
+  buildNav();
+  updateOriginalWeekHeaders();
+  cloneCycle2AndClosure();
+  // ============================================================
 
   const buttons = document.querySelectorAll('nav.weeks button');
   const weekSections = document.querySelectorAll('section.week');
@@ -1757,11 +1883,19 @@ Rest 90"
   }
 
   // ---------- Inyectar log form en cada bloque ----------
-  // Los bloques de core y skill (gimnásticos) son bodyweight → no piden peso ni RM.
-  const BODYWEIGHT_BLOCK_CLASSES = ['core', 'skill'];
-
-  function isBodyweightBlock(block) {
-    return BODYWEIGHT_BLOCK_CLASSES.some(c => block.classList.contains(c));
+  // Config de campos del formulario según el tipo de bloque:
+  // - core / conditioning: solo fecha + notas (sin peso, sin reps, sin RM)
+  // - skill (gimnástico): fecha + reps + notas (sin peso, sin RM)
+  // - resto (strength / accessory): todos los campos
+  function blockFieldConfig(block) {
+    const cls = block.classList;
+    if (cls.contains('core') || cls.contains('conditioning')) {
+      return { weight: false, reps: false, rm: false, notesPlaceholder: 'Resultado (rondas, tiempo, etc.)' };
+    }
+    if (cls.contains('skill')) {
+      return { weight: false, reps: true, rm: false, notesPlaceholder: 'Notas (opcional)' };
+    }
+    return { weight: true, reps: true, rm: true, notesPlaceholder: 'Notas (opcional)' };
   }
 
   document.querySelectorAll('section.week').forEach(week => {
@@ -1772,30 +1906,33 @@ Rest 90"
         const id = wId + '-s' + sIdx + '-' + rawTitle.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 40);
         block.dataset.blockId = id;
         block.dataset.blockTitle = rawTitle;
-        block.appendChild(buildLogUI(id, rawTitle, isBodyweightBlock(block)));
+        block.appendChild(buildLogUI(id, rawTitle, blockFieldConfig(block)));
       });
     });
   });
 
-  function buildLogUI(id, rawTitle, bodyweight) {
+  function buildLogUI(id, rawTitle, cfg) {
     const wrap = document.createElement('div');
     wrap.className = 'block-log-container';
 
     const form = document.createElement('div');
     form.className = 'block-log';
     const today = new Date().toISOString().slice(0, 10);
-    const weightInput = bodyweight
-      ? ''
-      : '<input type="text" class="log-weight" placeholder="Peso (kg)" inputmode="decimal">';
-    const rmLabel = bodyweight
-      ? ''
-      : '<label class="log-rm" title="Marcar como RM a estas reps"><input type="checkbox" class="log-rm-check"> RM</label>';
+    const weightInput = cfg.weight
+      ? '<input type="text" class="log-weight" placeholder="Peso (kg)" inputmode="decimal">'
+      : '';
+    const repsInput = cfg.reps
+      ? '<input type="text" class="log-reps" placeholder="Reps/Series/Tiempo" inputmode="text">'
+      : '';
+    const rmLabel = cfg.rm
+      ? '<label class="log-rm" title="Marcar como RM a estas reps"><input type="checkbox" class="log-rm-check"> RM</label>'
+      : '';
     form.innerHTML = ''
       + '<input type="date" class="log-date" value="' + today + '">'
       + weightInput
-      + '<input type="text" class="log-reps" placeholder="Reps/Series/Tiempo" inputmode="text">'
+      + repsInput
       + rmLabel
-      + '<input type="text" class="log-notes" placeholder="Notas (opcional)">'
+      + '<input type="text" class="log-notes" placeholder="' + cfg.notesPlaceholder + '">'
       + '<button class="log-save" type="button">Guardar</button>';
 
     const history = document.createElement('div');
@@ -1808,9 +1945,10 @@ Rest 90"
     form.querySelector('.log-save').addEventListener('click', () => {
       const date = form.querySelector('.log-date').value;
       const weightEl = form.querySelector('.log-weight');
+      const repsEl = form.querySelector('.log-reps');
       const rmEl = form.querySelector('.log-rm-check');
       const weight = weightEl ? weightEl.value.trim() : '';
-      const reps = form.querySelector('.log-reps').value.trim();
+      const reps = repsEl ? repsEl.value.trim() : '';
       const notes = form.querySelector('.log-notes').value.trim();
       const isRm = rmEl ? rmEl.checked : false;
       if (!weight && !reps && !notes) { toast('Nada que guardar'); return; }
@@ -1821,7 +1959,7 @@ Rest 90"
       data[id].entries.push(entry);
       saveLog(data);
       if (weightEl) weightEl.value = '';
-      form.querySelector('.log-reps').value = '';
+      if (repsEl) repsEl.value = '';
       form.querySelector('.log-notes').value = '';
       if (rmEl) rmEl.checked = false;
       renderHistory(id, history);
