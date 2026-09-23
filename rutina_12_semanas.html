@@ -381,6 +381,33 @@
   .log-history .entry .del:hover { color: #dc2626; }
   .log-history .empty { padding: 4px 0; opacity: 0.6; font-style: italic; }
 
+  /* Estado "ya registrado en esta fecha" */
+  .log-lock-msg {
+    font-size: 11px;
+    color: #059669;
+    background: #ecfdf5;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-top: 6px;
+    border: 1px solid #a7f3d0;
+    line-height: 1.4;
+  }
+  .block-log input:disabled,
+  .block-log label.log-rm input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f3f4f6;
+  }
+  .block-log button.log-save:disabled {
+    background: #d1d5db !important;
+    color: #6b7280;
+    cursor: not-allowed;
+  }
+  .block-log label.log-rm.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   /* Progress view */
   section.progress-view { display: none; }
   section.progress-view.active { display: block; }
@@ -799,38 +826,43 @@
     <div class="week-header">
       <div class="title">
         <h2>Semana 1. Adaptación</h2>
-        <div class="goal">Aprender patrones, dejarse peso en la recámara, priorizar técnica</div>
+        <div class="goal">Baseline del programa: 5RM en los 4 grandes. Prioriza técnica sobre número.</div>
       </div>
       <div class="params">
         <div class="param"><strong>Sesiones</strong>2/sem</div>
-        <div class="param"><strong>RIR</strong>3</div>
-        <div class="param"><strong>Enfoque</strong>Volumen ligero</div>
+        <div class="param"><strong>Tipo</strong>TEST</div>
+        <div class="param"><strong>Enfoque</strong>5RM baseline</div>
       </div>
     </div>
     <div class="sessions">
       <div class="session">
-        <h3>Sesión A. Squat + Push <span class="day-tag">Día 1</span></h3>
+        <h3>Sesión A. Test 5RM · Squat + Bench <span class="day-tag">Día 1</span></h3>
         <div class="blocks">
           <div class="block strength">
-            <div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza</span></div>
-            <div class="block-body"><strong>3 x 8</strong> @RIR 3
-Rest 2' entre series
-<span class="cue">Elige un peso con el que podrías hacer 11 reps. Prioriza profundidad y postura.</span></div>
+            <div class="block-head"><span class="block-title">A. Back Squat — 5RM baseline</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Progresión hasta 5RM</strong>
+Calentamiento: 8 @vacía · 5 @light · 5 @medium
+Approaches: 5 · 5 · 5 subiendo ~5-10 kg entre serie
+<strong>Intento 5RM</strong> cuando la penúltima serie de 5 ya cueste
+Rest 3' entre approaches pesadas
+<span class="cue">Si dudas si sacar la última rep limpia, para antes. Baseline conservador es mejor que un fallo.</span>
+<strong>Registra el peso con la casilla RM marcada</strong></div>
+          </div>
+          <div class="block strength">
+            <div class="block-head"><span class="block-title">B. Bench Press — 5RM baseline</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Progresión hasta 5RM</strong>
+Calentamiento: 8 @vacía · 5 @light · 5 @medium
+Approaches: 5 · 5 · 5 subiendo peso
+<strong>Intento 5RM</strong>
+Rest 3' entre approaches pesadas
+<span class="cue">Con observador si vas al fallo. Sin observador, para con 1 rep en la recámara.</span>
+<strong>Registra con la casilla RM marcada</strong></div>
           </div>
           <div class="block accessory">
-            <div class="block-head"><span class="block-title">B1. DB Bench Press</span><span class="block-type">Empuje horiz.</span></div>
+            <div class="block-head"><span class="block-title">C. Bent Over Row</span><span class="block-type">Accesorio ligero</span></div>
             <div class="block-body"><strong>3 x 10</strong> @Medium
-Superserie con B2</div>
-          </div>
-          <div class="block accessory">
-            <div class="block-head"><span class="block-title">B2. Bent Over Row (barra)</span><span class="block-type">Tracción horiz.</span></div>
-            <div class="block-body"><strong>3 x 10</strong> @Medium
-Rest 90" tras cada pareja B1+B2</div>
-          </div>
-          <div class="block accessory">
-            <div class="block-head"><span class="block-title">C. Bulgarian Split</span><span class="block-type">Unilateral</span></div>
-            <div class="block-body"><strong>2 x 10 por pierna</strong> con DBs ligeras o peso corporal
-Rest 60" entre lados</div>
+Rest 90"
+<span class="cue">Trabajo suave post-test, no ir a fuego.</span></div>
           </div>
           <div class="block core">
             <div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
@@ -839,52 +871,42 @@ Rest 60" entre lados</div>
 30" Hollow Hold
 30" Rest</div>
           </div>
-          <div class="block conditioning">
-            <div class="block-head"><span class="block-title">E. Conditioning (opcional)</span><span class="block-type">MetCon</span></div>
-            <div class="block-body"><strong>3 Rounds Easy</strong>
-10 Cals AAB
-200m Row @pace conversacional
-<span class="cue">Pulso controlado, no ir a fuego</span></div>
-          </div>
         </div>
       </div>
 
       <div class="session">
-        <h3>Sesión B. Hinge + Pull <span class="day-tag">Día 2</span></h3>
+        <h3>Sesión B. Test 5RM · Deadlift + Press <span class="day-tag">Día 2</span></h3>
         <div class="blocks">
           <div class="block strength">
-            <div class="block-head"><span class="block-title">A. Romanian Deadlift</span><span class="block-type">Bisagra</span></div>
-            <div class="block-body"><strong>3 x 8</strong> @RIR 3
-Rest 2'
-<span class="cue">Bajada lenta (3"), sentir isquios</span></div>
+            <div class="block-head"><span class="block-title">A. Deadlift convencional — 5RM baseline</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Progresión hasta 5RM</strong>
+Calentamiento: 5 @vacía · 5 @light · 3 @medium
+Approaches: 5 · 3 · 3 subiendo peso
+<strong>Intento 5RM</strong>
+Rest 3-5' entre approaches pesadas (más descanso que otros)
+<span class="cue">Cadera y espalda neutrales — si pierdes técnica, se acabó el test. Deadlift es el más traicionero.</span>
+<strong>Registra con la casilla RM marcada</strong></div>
+          </div>
+          <div class="block strength">
+            <div class="block-head"><span class="block-title">B. Strict Shoulder Press — 5RM baseline</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Progresión hasta 5RM</strong>
+Calentamiento: 8 @vacía · 5 @light
+Approaches: 5 · 5 subiendo peso
+<strong>Intento 5RM</strong>
+<span class="cue">Sin impulso de piernas — press estricto. Si empujas con las piernas, no cuenta.</span>
+<strong>Registra con la casilla RM marcada</strong></div>
           </div>
           <div class="block accessory">
-            <div class="block-head"><span class="block-title">B1. Strict Shoulder Press (barra)</span><span class="block-type">Empuje vert.</span></div>
-            <div class="block-body"><strong>3 x 8</strong> @Light
-Superserie con B2</div>
-          </div>
-          <div class="block accessory">
-            <div class="block-head"><span class="block-title">B2. Ring Row</span><span class="block-type">Tracción horiz.</span></div>
-            <div class="block-body"><strong>3 x AMRAP - 2</strong> (deja 2 reps en la recámara)
+            <div class="block-head"><span class="block-title">C. Ring Row</span><span class="block-type">Accesorio ligero</span></div>
+            <div class="block-body"><strong>3 x AMRAP - 2</strong>
 Ajusta inclinación según nivel
-Rest 90" entre parejas</div>
-          </div>
-          <div class="block accessory">
-            <div class="block-head"><span class="block-title">C. Goblet Squat</span><span class="block-type">Squat unilateral</span></div>
-            <div class="block-body"><strong>3 x 12</strong> con KTB o DB @Medium
-Rest 60"</div>
+Rest 90"</div>
           </div>
           <div class="block core">
             <div class="block-head"><span class="block-title">D. Core</span><span class="block-type">Core</span></div>
             <div class="block-body"><strong>3 Rounds</strong>
 10 Hollow Rocks
 10 V-Ups
-30" Rest</div>
-          </div>
-          <div class="block conditioning">
-            <div class="block-head"><span class="block-title">E. Conditioning</span><span class="block-type">MetCon</span></div>
-            <div class="block-body"><strong>5 Rounds</strong>
-30" KTB Swing Ruso @24
 30" Rest</div>
           </div>
         </div>
@@ -1312,9 +1334,11 @@ Rest 2'</div></div>
             <div class="block-body"><strong>3 x 10</strong></div></div>
           <div class="block accessory"><div class="block-head"><span class="block-title">E. Elevaciones Laterales</span><span class="block-type">Hombro</span></div>
             <div class="block-body"><strong>3 x 12</strong></div></div>
-          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning</span><span class="block-type">MetCon</span></div>
-            <div class="block-body"><strong>4 Rounds</strong>
-200m Row · 12 Push Ups · 30" Rest</div></div>
+          <div class="block conditioning"><div class="block-head"><span class="block-title">F. Conditioning · Devil Press EMOM</span><span class="block-type">MetCon</span></div>
+            <div class="block-body"><strong>EMOM 10'</strong>
+1: 5 Devil Press @DB 22,5/15 kg
+2: 12 Cals Row
+<span class="cue">Devil Press: burpee sobre las mancuernas + snatch/press. Si no llegas al minuto, baja peso.</span></div></div>
         </div>
       </div>
       <div class="session">
@@ -1434,8 +1458,10 @@ Cals AAB · KTB Swing @24 · Sit Ups</div></div>
           <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat</span><span class="block-type">Fuerza pesada</span></div>
             <div class="block-body"><strong>Top set 3RM día</strong> · luego <strong>3 x 5</strong> @80%
 Rest 3'</div></div>
-          <div class="block strength"><div class="block-head"><span class="block-title">B. Romanian DL</span><span class="block-type">Bisagra</span></div>
-            <div class="block-body"><strong>4 x 5</strong> @Heavy</div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Deadlift convencional</span><span class="block-type">Bisagra pesada</span></div>
+            <div class="block-body"><strong>4 x 4</strong> @Heavy
+Rest 3-4'
+<span class="cue">Convencional (no RDL). Neutral spine, sube pecho antes de mover la barra.</span></div></div>
           <div class="block accessory"><div class="block-head"><span class="block-title">C. Bulgarian Split BB (Zercher o back)</span><span class="block-type">Unilateral</span></div>
             <div class="block-body"><strong>3 x 6 por pierna</strong></div></div>
           <div class="block accessory"><div class="block-head"><span class="block-title">D. Hip Thrust pesado</span><span class="block-type">Glúteo</span></div>
@@ -1563,30 +1589,40 @@ Rest 3'</div></div>
     </div>
     <div class="sessions">
       <div class="session">
-        <h3>Test 1. Back Squat 3RM <span class="day-tag">Día 1</span></h3>
+        <h3>Test 1. Lower · Back Squat + Deadlift 3RM <span class="day-tag">Día 1</span></h3>
         <div class="blocks">
           <div class="block strength"><div class="block-head"><span class="block-title">A. Back Squat — 3RM</span><span class="block-type">Test</span></div>
             <div class="block-body"><strong>Aproximaciones + 3RM</strong>
-5x50% · 5x65% · 3x75% · 3x82% · 3x88% · 3RM
-Rest 3-4' entre approaches pesadas</div></div>
-          <div class="block accessory"><div class="block-head"><span class="block-title">B. Romanian DL</span><span class="block-type">Accesorio</span></div>
-            <div class="block-body"><strong>3 x 8</strong> @Medium</div></div>
+5x50% · 5x65% · 3x75% · 3x82% · 3x88% · <strong>3RM</strong>
+Rest 3-4' entre approaches pesadas
+<strong>Registra con casilla RM marcada</strong></div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Deadlift convencional — 3RM</span><span class="block-type">Test</span></div>
+            <div class="block-body"><strong>Aproximaciones + 3RM</strong>
+Menos volumen de calentamiento que squat (Deadlift acumula fatiga rápido)
+5x60% · 3x75% · 3x85% · <strong>3RM</strong>
+Rest 4-5' entre approaches pesadas
+<span class="cue">Si pierdes neutralidad de espalda, se acabó el test. Registra el último peso con técnica limpia.</span>
+<strong>Registra con casilla RM marcada</strong></div></div>
           <div class="block core"><div class="block-head"><span class="block-title">C. Core</span><span class="block-type">Core</span></div>
             <div class="block-body"><strong>3 Rounds</strong>
 15 V-Ups · 45" Plancha</div></div>
         </div>
       </div>
       <div class="session">
-        <h3>Test 2. Bench + Deadlift <span class="day-tag">Día 2</span></h3>
+        <h3>Test 2. Push · Bench + Shoulder Press 3RM <span class="day-tag">Día 2</span></h3>
         <div class="blocks">
           <div class="block strength"><div class="block-head"><span class="block-title">A. Bench Press — 3RM</span><span class="block-type">Test</span></div>
             <div class="block-body"><strong>Aproximaciones + 3RM</strong>
-Misma dinámica que Back Squat</div></div>
-          <div class="block strength"><div class="block-head"><span class="block-title">B. Deadlift — 3RM</span><span class="block-type">Test</span></div>
+5x50% · 5x65% · 3x75% · 3x82% · 3x88% · <strong>3RM</strong>
+Con observador si vas al 100%
+<strong>Registra con casilla RM marcada</strong></div></div>
+          <div class="block strength"><div class="block-head"><span class="block-title">B. Strict Shoulder Press — 3RM</span><span class="block-type">Test</span></div>
             <div class="block-body"><strong>Aproximaciones + 3RM</strong>
-Descanso adicional entre approaches (3-5')</div></div>
+5x50% · 5x70% · 3x80% · <strong>3RM</strong>
+<span class="cue">Sin impulso de piernas — press estricto. Si empujas con las piernas, no cuenta.</span>
+<strong>Registra con casilla RM marcada</strong></div></div>
           <div class="block accessory"><div class="block-head"><span class="block-title">C. Bent Over Row</span><span class="block-type">Accesorio</span></div>
-            <div class="block-body"><strong>3 x 8</strong> @Medium</div></div>
+            <div class="block-body"><strong>3 x 8</strong> @Medium (trabajo suave post-test)</div></div>
         </div>
       </div>
       <div class="session">
@@ -1646,32 +1682,32 @@ Rest 90"
   const MONTHS_ES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 
   const WEEK_TITLES = {
-    1: 'Adaptación',
+    1: '⭐ Test 5RM baseline',
     2: 'Consolidación',
     3: 'Volumen',
     4: 'Intensidad',
     5: 'Fuerza',
-    6: 'Test + descarga suave',
+    6: 'Descarga suave',
     7: 'Nuevo split (3/sem)',
     8: 'Subir intensidad',
     9: 'Volumen medio-alto',
     10: 'Intensidad pesada',
     11: 'Pico',
-    12: 'Test final Ciclo 1',
+    12: '⭐ Test 3RM · Cierre Ciclo 1',
     13: 'Adaptación · Ciclo 2',
     14: 'Consolidación · Ciclo 2',
     15: 'Volumen · Ciclo 2',
     16: 'Intensidad · Ciclo 2',
     17: 'Fuerza · Ciclo 2',
-    18: 'Test + descarga · Ciclo 2',
+    18: 'Descarga · Ciclo 2',
     19: 'Nuevo split · Ciclo 2',
     20: 'Subir intensidad · Ciclo 2',
     21: 'Volumen medio-alto · Ciclo 2',
     22: 'Intensidad pesada · Ciclo 2',
     23: 'Pico · Ciclo 2',
-    24: 'Test final Ciclo 2',
-    25: 'Descarga',
-    26: 'Test final del programa'
+    24: '⭐ Test 1RM · Cierre Ciclo 2',
+    25: 'Descarga final',
+    26: '⭐ Test 1RM · Retest final'
   };
 
   // Fuente de contenido para las semanas del Ciclo 2 y el cierre.
@@ -1764,9 +1800,44 @@ Rest 90"
     });
   }
 
+  // S24 y S26 son tests de 1RM (no 3RM). Como clonan S12 (que es 3RM),
+  // reemplazamos referencias de "3RM" por "1RM" en su contenido.
+  function convertTestWeeksTo1RM() {
+    ['w24', 'w26'].forEach(id => {
+      const wk = document.getElementById(id);
+      if (!wk) return;
+      const swap = (text) => text
+        .replace(/3RM/g, '1RM')
+        .replace(/3x88%/g, '1x92% · 1x96%')
+        .replace(/3x82%/g, '1x85%')
+        .replace(/3x85%/g, '1x88%')
+        .replace(/3x80%/g, '1x88%');
+      wk.querySelectorAll('.block-title').forEach(el => { el.textContent = swap(el.textContent); });
+      wk.querySelectorAll('.block-body').forEach(el => { el.innerHTML = swap(el.innerHTML); });
+      wk.querySelectorAll('.day-tag').forEach(el => { el.textContent = swap(el.textContent); });
+      wk.querySelectorAll('.session h3').forEach(el => { el.innerHTML = swap(el.innerHTML); });
+    });
+  }
+
+  // S25 (Descarga) clona S6 (que ya es descarga). Refuerza el mensaje.
+  function tuneClosureWeeks() {
+    const w25 = document.getElementById('w25');
+    if (w25) {
+      const goal = w25.querySelector('.week-header .goal');
+      if (goal) goal.textContent = 'Descarga final antes del test 1RM. Volumen reducido, intensidad baja. Recupera para el test.';
+    }
+    const w26 = document.getElementById('w26');
+    if (w26) {
+      const goal = w26.querySelector('.week-header .goal');
+      if (goal) goal.textContent = 'Test 1RM final del programa: Back Squat, Bench Press, Deadlift, Shoulder Press. Marca la casilla RM en cada intento.';
+    }
+  }
+
   buildNav();
   updateOriginalWeekHeaders();
   cloneCycle2AndClosure();
+  convertTestWeeksTo1RM();
+  tuneClosureWeeks();
   // ============================================================
 
   const buttons = document.querySelectorAll('nav.weeks button');
@@ -1828,6 +1899,18 @@ Rest 90"
     setSyncStatus(total + ' registros locales', 'ok');
   }
 
+  // Recorre todas las entradas del payload y normaliza cada fecha a ISO.
+  function normalizeLogPayload(data) {
+    const out = {};
+    Object.entries(data || {}).forEach(([id, val]) => {
+      out[id] = {
+        title: (val && val.title) || '',
+        entries: ((val && val.entries) || []).map(e => Object.assign({}, e, { date: normalizeDate(e.date) }))
+      };
+    });
+    return out;
+  }
+
   async function pullFromSheets(silent) {
     if (!apiUrl) return;
     if (!silent) setSyncStatus('sincronizando…', 'syncing');
@@ -1835,11 +1918,12 @@ Rest 90"
       const res = await fetch(apiUrl + '?t=' + Date.now(), { method: 'GET', redirect: 'follow' });
       const j = await res.json();
       if (!j.ok) throw new Error(j.error || 'respuesta inválida');
-      saveLog(j.data || {});
+      const normalized = normalizeLogPayload(j.data);
+      saveLog(normalized);
       refreshAllHistories();
       if (progressView.classList.contains('active')) renderProgress();
       if (diarioView.classList.contains('active')) renderDiario();
-      const total = Object.values(j.data || {}).reduce((n, v) => n + (v.entries?.length || 0), 0);
+      const total = Object.values(normalized).reduce((n, v) => n + (v.entries?.length || 0), 0);
       setSyncStatus('sincronizado · ' + total + ' registros', 'ok');
       return true;
     } catch (err) {
@@ -1871,6 +1955,36 @@ Rest 90"
   // ---------- Normalizar título (quitar "A. ", "B1. " etc.) ----------
   function cleanTitle(t) {
     return (t || '').replace(/^[A-Z]\d?\.\s*/, '').trim();
+  }
+
+  // ---------- Normalizar y formatear fecha ----------
+  // Google Sheets a veces devuelve fechas como "Tue Sep 22 2026 00:00:00 GMT+0200 (...)"
+  // en lugar de ISO. Esta función acepta ambas formas y devuelve "YYYY-MM-DD".
+  function normalizeDate(d) {
+    if (!d) return '';
+    const s = String(d).trim();
+    // Ya en ISO (YYYY-MM-DD) o similar
+    const isoMatch = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (isoMatch) return isoMatch[1] + '-' + isoMatch[2] + '-' + isoMatch[3];
+    // Parsear con Date
+    const parsed = new Date(s);
+    if (!isNaN(parsed.getTime())) {
+      const y = parsed.getFullYear();
+      const m = String(parsed.getMonth() + 1).padStart(2, '0');
+      const day = String(parsed.getDate()).padStart(2, '0');
+      return y + '-' + m + '-' + day;
+    }
+    return s;
+  }
+
+  // Muestra "22 sep 2026" (corto, español).
+  function displayDate(d) {
+    const iso = normalizeDate(d);
+    const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!m) return iso;
+    const day = parseInt(m[3], 10);
+    const month = MONTHS_ES[parseInt(m[2], 10) - 1] || m[2];
+    return day + ' ' + month + ' ' + m[1];
   }
 
   // ---------- Inyectar log form en cada bloque ----------
@@ -1931,7 +2045,17 @@ Rest 90"
 
     wrap.appendChild(form);
     wrap.appendChild(history);
-    renderHistory(id, history);
+
+    function refresh() {
+      renderHistory(id, history);
+      updateFormLock(id, wrap);
+    }
+
+    refresh();
+
+    form.querySelector('.log-date').addEventListener('change', () => {
+      updateFormLock(id, wrap);
+    });
 
     form.querySelector('.log-save').addEventListener('click', () => {
       const date = form.querySelector('.log-date').value;
@@ -1943,8 +2067,14 @@ Rest 90"
       const notes = form.querySelector('.log-notes').value.trim();
       const isRm = rmEl ? rmEl.checked : false;
       if (!weight && !reps && !notes) { toast('Nada que guardar'); return; }
-      const entry = { date, weight, reps, notes, rm: isRm ? '1' : '', ts: Date.now() };
+      // Defensa por si el estado del form no bloquea (llamada por teclado, etc.)
       const data = loadLog();
+      const existing = (data[id]?.entries || []).find(e => e.date === date);
+      if (existing) {
+        toast('Ya hay una entrada para ' + date + '. Bórrala primero.');
+        return;
+      }
+      const entry = { date, weight, reps, notes, rm: isRm ? '1' : '', ts: Date.now() };
       if (!data[id]) data[id] = { title: rawTitle, entries: [] };
       data[id].title = rawTitle;
       data[id].entries.push(entry);
@@ -1953,12 +2083,46 @@ Rest 90"
       if (repsEl) repsEl.value = '';
       form.querySelector('.log-notes').value = '';
       if (rmEl) rmEl.checked = false;
-      renderHistory(id, history);
+      refresh();
       toast(isRm ? '¡RM guardado!' : 'Guardado');
       pushToSheets({ action: 'add', blockId: id, title: rawTitle, entry });
     });
 
     return wrap;
+  }
+
+  // Bloquea el formulario si ya existe una entrada para la fecha seleccionada.
+  // Se llama al montar el bloque, al cambiar la fecha, tras guardar y tras borrar.
+  function updateFormLock(id, container) {
+    const form = container.querySelector('.block-log');
+    if (!form) return;
+    const dateInput = form.querySelector('.log-date');
+    const saveBtn = form.querySelector('.log-save');
+    const otherInputs = form.querySelectorAll('input:not(.log-date)');
+    const rmLabel = form.querySelector('label.log-rm');
+    const data = loadLog();
+    const entries = data[id]?.entries || [];
+    const date = dateInput.value;
+    const existing = entries.find(e => e.date === date);
+    let lockMsg = container.querySelector('.log-lock-msg');
+    if (existing) {
+      saveBtn.disabled = true;
+      saveBtn.textContent = 'Guardado ✓';
+      otherInputs.forEach(i => { i.disabled = true; });
+      if (rmLabel) rmLabel.classList.add('disabled');
+      if (!lockMsg) {
+        lockMsg = document.createElement('div');
+        lockMsg.className = 'log-lock-msg';
+        form.insertAdjacentElement('afterend', lockMsg);
+      }
+      lockMsg.textContent = '✓ Ya registrado para ' + date + '. Borra la entrada del historial (× a la derecha) para modificarla.';
+    } else {
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Guardar';
+      otherInputs.forEach(i => { i.disabled = false; });
+      if (rmLabel) rmLabel.classList.remove('disabled');
+      if (lockMsg) lockMsg.remove();
+    }
   }
 
   function renderHistory(id, container) {
@@ -1970,7 +2134,7 @@ Rest 90"
     }
     container.innerHTML = entries.map(e => {
       const bits = [];
-      if (e.date) bits.push('<strong>' + e.date + '</strong>');
+      if (e.date) bits.push('<strong>' + displayDate(e.date) + '</strong>');
       if (e.weight) bits.push(e.weight + ' kg');
       if (e.reps) bits.push(e.reps);
       if (e.notes) bits.push('<em>' + escapeHtml(e.notes) + '</em>');
@@ -1988,6 +2152,9 @@ Rest 90"
           saveLog(data);
         }
         renderHistory(id, container);
+        // Tras borrar, re-evaluar el bloqueo del formulario del bloque padre
+        const parent = container.parentElement;
+        if (parent) updateFormLock(id, parent);
         toast('Borrado');
         pushToSheets({ action: 'delete', blockId: id, ts });
       });
@@ -2041,12 +2208,13 @@ Rest 90"
         const imported = JSON.parse(reader.result);
         if (typeof imported !== 'object' || imported === null) throw new Error('Formato inválido');
         if (!confirm('¿Reemplazar el log actual con el fichero importado?')) return;
-        saveLog(imported);
+        const normalized = normalizeLogPayload(imported);
+        saveLog(normalized);
         refreshAllHistories();
         if (progressView.classList.contains('active')) renderProgress();
         if (diarioView.classList.contains('active')) renderDiario();
         toast('Importado');
-        pushToSheets({ action: 'replace', data: imported });
+        pushToSheets({ action: 'replace', data: normalized });
       } catch (err) {
         alert('Fichero inválido: ' + err.message);
       }
@@ -2069,8 +2237,11 @@ Rest 90"
 
   function refreshAllHistories() {
     document.querySelectorAll('.block[data-block-id]').forEach(b => {
+      const id = b.dataset.blockId;
       const hist = b.querySelector('.log-history');
-      if (hist) renderHistory(b.dataset.blockId, hist);
+      const container = b.querySelector('.block-log-container');
+      if (hist) renderHistory(id, hist);
+      if (container) updateFormLock(id, container);
     });
   }
 
@@ -2136,8 +2307,14 @@ Rest 90"
     if (!exercise) { toast('Falta el ejercicio'); return; }
     if (!weight && !reps && !notes) { toast('Nada que guardar'); return; }
     const blockId = DIARIO_BLOCK_PREFIX + slugify(exercise);
-    const entry = { date, weight, reps, notes, rm: isRm ? '1' : '', ts: Date.now() };
     const data = loadLog();
+    // Impedir duplicados de (ejercicio, fecha) en el Diario
+    const existing = (data[blockId]?.entries || []).find(e => e.date === date);
+    if (existing) {
+      alert('Ya hay una entrada de "' + exercise + '" para ' + date + '.\n\nSi quieres modificarla, bórrala primero desde la lista de abajo.');
+      return;
+    }
+    const entry = { date, weight, reps, notes, rm: isRm ? '1' : '', ts: Date.now() };
     if (!data[blockId]) data[blockId] = { title: exercise, entries: [] };
     data[blockId].title = exercise;
     data[blockId].entries.push(entry);
@@ -2169,12 +2346,12 @@ Rest 90"
       container.innerHTML = '<p style="color:var(--muted); text-align:center; padding:24px 0;">Sin entradas. Rellena el formulario de arriba para empezar.</p>';
       return;
     }
-    // Agrupar por fecha (fallback: fecha del ts)
+    // Agrupar por fecha ISO normalizada (fallback: fecha del ts)
     const byDay = {};
     flat.forEach(e => {
-      const day = e.date || new Date(e.ts || 0).toISOString().slice(0, 10);
-      if (!byDay[day]) byDay[day] = [];
-      byDay[day].push(e);
+      const iso = normalizeDate(e.date) || new Date(e.ts || 0).toISOString().slice(0, 10);
+      if (!byDay[iso]) byDay[iso] = [];
+      byDay[iso].push(e);
     });
     const days = Object.keys(byDay).sort().reverse();
     container.innerHTML = days.map(day => {
@@ -2193,7 +2370,7 @@ Rest 90"
       }).join('');
       return ''
         + '<div class="diario-day">'
-        + '<div class="day-head">' + day + '<span class="count">' + entries.length + ' entrada' + (entries.length === 1 ? '' : 's') + '</span></div>'
+        + '<div class="day-head">' + displayDate(day) + '<span class="count">' + entries.length + ' entrada' + (entries.length === 1 ? '' : 's') + '</span></div>'
         + rows
         + '</div>';
     }).join('');
@@ -2261,7 +2438,7 @@ Rest 90"
       + '<td>' + escapeHtml(r.name) + '</td>'
       + '<td>' + (r.repsNum != null ? r.repsNum + ' rep' + (r.repsNum === 1 ? '' : 's') : escapeHtml(r.rawReps) || '—') + '</td>'
       + '<td class="weight">' + r.weight + ' kg</td>'
-      + '<td>' + (r.date || '') + '</td>'
+      + '<td>' + displayDate(r.date) + '</td>'
       + '</tr>').join('');
     slot.innerHTML = ''
       + '<div class="rm-summary">'
@@ -2305,7 +2482,7 @@ Rest 90"
         const trCls = isRm ? ' class="is-rm"' : '';
         const wCls = isRm ? ' class="rm-cell" title="Marcado como RM"' : (isPr ? ' class="pr" title="Máximo peso del ejercicio"' : '');
         return '<tr' + trCls + '>'
-          + '<td>' + (e.date || '') + '</td>'
+          + '<td>' + displayDate(e.date) + '</td>'
           + '<td' + wCls + '>' + (e.weight || '') + (e.weight ? ' kg' : '') + '</td>'
           + '<td>' + (e.reps || '') + '</td>'
           + '<td>' + (isRm ? '<span class="rm-badge">RM</span>' : '') + '</td>'
@@ -2378,6 +2555,23 @@ Rest 90"
     const ok = await pushToSheets({ action: 'replace', data });
     showConfigResult(ok ? 'Log local subido al Sheet.' : 'No se pudo subir. Ver estado arriba.', ok ? 'ok' : 'err');
   });
+
+  // ---------- Limpieza de fechas legadas en localStorage ----------
+  (function migrateLegacyDates() {
+    const raw = loadLog();
+    let dirty = false;
+    Object.values(raw).forEach(val => {
+      if (!val || !val.entries) return;
+      val.entries.forEach(e => {
+        const norm = normalizeDate(e.date);
+        if (norm !== e.date) { e.date = norm; dirty = true; }
+      });
+    });
+    if (dirty) {
+      saveLog(raw);
+      refreshAllHistories();
+    }
+  })();
 
   // ---------- Pull inicial al cargar ----------
   updateSyncStatus();
